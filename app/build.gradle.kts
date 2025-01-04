@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.compose.compiler)
-
+    id("com.google.gms.google-services")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -15,7 +17,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -62,11 +63,17 @@ dependencies {
 
     implementation(libs.hilt)
     implementation(libs.material)
+    implementation(libs.play.services.fido)
+    implementation(libs.play.services.fido)
+    kapt(libs.hilt.compiler)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.compose.v253)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
+    implementation(libs.google.accompanist.flowlayout)
+
 
     implementation(libs.ktor.client.core)
 
@@ -76,6 +83,10 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.timber)
     implementation(libs.googlePlayServiceAuth)
+
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.googlePlayServiceAuth)
+    implementation(platform(libs.firebase.bom))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -4,7 +4,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")
+        jcenter()
+    }
+    dependencies {
+        classpath(libs.gradle.v811)
+        classpath (libs.google.services)
     }
 
 }

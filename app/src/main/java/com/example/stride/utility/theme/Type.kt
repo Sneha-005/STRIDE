@@ -22,7 +22,7 @@ val DefaultTextStyle = TextStyle(
 )
 
 @Composable
-fun textStyleInter16Lh28Fw700(): TextStyle {
+fun textStyleInter16Lh18Fw700(): TextStyle {
     return DefaultTextStyle.copy(
         color = colorResource(id = R.color.font_600),
         fontSize = 16.ssp,
@@ -33,7 +33,7 @@ fun textStyleInter16Lh28Fw700(): TextStyle {
 }
 
 @Composable
-fun textStyleInter16Lh28Fw600(): TextStyle {
+fun textStyleInter24Lh28Fw600(): TextStyle {
     return DefaultTextStyle.copy(
         color = colorResource(id = R.color.font_600),
         fontSize = 24.ssp,
@@ -44,7 +44,19 @@ fun textStyleInter16Lh28Fw600(): TextStyle {
 }
 
 @Composable
-fun textStyleInter16Lh28Fw500(): TextStyle {
+fun textStyleInter14Lh20Fw600(): TextStyle {
+    return DefaultTextStyle.copy(
+        color = colorResource(id = R.color.font_600),
+        fontSize = 14.ssp,
+        lineHeight = 20.ssp,
+        fontFamily = FontFamily(Font(R.font.nunito_sans)),
+        fontWeight = FontWeight(600)
+    )
+}
+
+
+@Composable
+fun textStyleInter16Lh24Fw500(): TextStyle {
     return DefaultTextStyle.copy(
         color = colorResource(id = R.color.font_500),
         fontSize = 16.ssp,
@@ -55,12 +67,43 @@ fun textStyleInter16Lh28Fw500(): TextStyle {
 }
 
 @Composable
-fun textStyleInter16Lh28Fw400(): TextStyle {
+fun textStyleInter12Lh18Fw500(): TextStyle {
+    return DefaultTextStyle.copy(
+        color = colorResource(id = R.color.font_500),
+        fontSize = 12.ssp,
+        lineHeight = 18.ssp,
+        fontFamily = FontFamily(Font(R.font.nunito_sans)),
+        fontWeight = FontWeight(600)
+    )
+}
+
+@Composable
+fun textStyleInter16Lh24Fw400(): TextStyle {
     return DefaultTextStyle.copy(
         color = colorResource(id = R.color.font_600),
-        fontSize = 24.ssp,
-        lineHeight = 28.ssp,
+        fontSize = 16.ssp,
+        lineHeight = 24.ssp,
         fontFamily = FontFamily(Font(R.font.nunito_sans)),
         fontWeight = FontWeight(400)
+    )
+}
+@Composable
+fun textStyleInter12Lh18Fw400(): TextStyle {
+    return DefaultTextStyle.copy(
+        color = colorResource(id = R.color.font_600),
+        fontSize = 12.ssp,
+        lineHeight = 18.ssp,
+        fontFamily = FontFamily(Font(R.font.nunito_sans)),
+        fontWeight = FontWeight(400)
+    )
+}
+@Composable
+fun textStyleInter14Lh16Fw700(): TextStyle {
+    return DefaultTextStyle.copy(
+        color = colorResource(id = R.color.font_600),
+        fontSize = 14.ssp,
+        lineHeight = 16.ssp,
+        fontFamily = FontFamily(Font(R.font.nunito_sans)),
+        fontWeight = FontWeight(700)
     )
 }
