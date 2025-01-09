@@ -147,7 +147,8 @@ fun SplashScreenLandscape(
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.background_color))
+            .background(colorResource(id = R.color.background_color)),
+        
     ) {
         val screenWidth = maxWidth
         val screenHeight = maxHeight
@@ -159,9 +160,7 @@ fun SplashScreenLandscape(
             horizontalArrangement = Arrangement.Center
         ) {
             Box(
-                modifier = Modifier
-                    .padding(top = (screenHeight * 0.05f), bottom = (screenHeight * 0.02f))
-                    .weight(0.5f)
+
             ) {
                 Column(
                     modifier = Modifier
@@ -210,7 +209,7 @@ fun SplashScreenLandscape(
                         shape = MaterialTheme.shapes.extraLarge,
                         modifier = Modifier
                             .padding(vertical = 8.dp)
-                            .height(screenHeight * 0.07f)
+                            .height(50.dp)
                             .width(screenWidth * 0.8f)
                     ) {
                         Text(

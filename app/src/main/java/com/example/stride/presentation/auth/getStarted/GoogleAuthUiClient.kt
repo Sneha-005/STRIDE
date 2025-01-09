@@ -1,5 +1,5 @@
-// GoogleAuthUiClient.kt
 package com.example.stride.presentation.auth.getStarted
+import android.util.Log
 
 import android.content.Context
 import android.content.Intent
@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.tasks.await
-/*
+
 class GoogleAuthUiClient(
     private val context: Context,
     private val oneTapClient: SignInClient
@@ -37,8 +37,13 @@ class GoogleAuthUiClient(
         val credential = oneTapClient.getSignInCredentialFromIntent(intent)
         val googleIdToken = credential.googleIdToken
         val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
+        Log.d("GoogleAuthUiClien", "signInWithIntent: $googleCredentials")
+
         return try {
+            val email = extractEmailFromIdToken(googleIdToken)
             val user = auth.signInWithCredential(googleCredentials).await().user
+            Log.d("GoogleAuthUiClient", "signInWithIntent: $user")
+            Log.d("email","${email}")
             SignInResult(
                 data = user?.run {
                     UserData(
@@ -56,7 +61,18 @@ class GoogleAuthUiClient(
             )
         }
     }
-
+    private fun extractEmailFromIdToken(googleIdToken: String?): String? {
+        return try {
+            val parts = googleIdToken?.split(".") ?: return null
+            if (parts.size < 2) return null
+            val payloadJson = String(android.util.Base64.decode(parts[1], android.util.Base64.URL_SAFE), Charsets.UTF_8)
+            val payload = org.json.JSONObject(payloadJson)
+            payload.optString("email")
+        } catch (e: Exception) {
+            Log.e("GoogleAuthUiClient", "Error parsing ID token: ${e.message}", e)
+            null
+        }
+    }
     suspend fun signOut() {
         try {
             oneTapClient.signOut().await()
@@ -85,4 +101,4 @@ class GoogleAuthUiClient(
             .setAutoSelectEnabled(true)
             .build()
     }
-}*/
+}

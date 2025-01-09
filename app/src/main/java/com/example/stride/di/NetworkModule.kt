@@ -2,9 +2,11 @@ package com.example.stride.di
 
 import android.content.Context
 import com.example.stride.data.local.DataStoreRepository
+import com.example.stride.data.local.ResetDataStore
 import com.example.stride.data.remote.ApiServices
 import com.example.stride.data.repository.ApiServicesRepositoryImpl
 import com.example.stride.domain.repository.ApiServicesRepository
+import com.example.stride.presentation.auth.getStarted.GoogleAuthUiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,6 +14,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.runBlocking
 import retrofit2.Retrofit
+import com.google.android.gms.auth.api.identity.Identity
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -24,6 +27,16 @@ object NetworkModule
     @Singleton
     fun provideDataStoreRepository(@ApplicationContext context: Context): DataStoreRepository {
         return DataStoreRepository(context)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideGoogleAuthUiClient(context: Context): GoogleAuthUiClient {
+        return GoogleAuthUiClient(
+            context = context,
+            oneTapClient = Identity.getSignInClient(context)
+        )
     }
 
     @Provides
@@ -58,5 +71,11 @@ object NetworkModule
         return runBlocking {
             dataStoreRepository.readToken() ?: ""
         }
+    }
+
+    @Provides
+    @Singleton
+    fun provideResetDataStore(context: Context): ResetDataStore {
+        return ResetDataStore(context)
     }
 }

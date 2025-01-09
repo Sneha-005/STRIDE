@@ -14,4 +14,5 @@
     <color name="divider">#888888</color>
     <color name="error_color">#FF4331</color>
     <color name="light_coral">#FFA8A0</color>
+    <color name="dark_gray">#4A4848</color>
 </resources>

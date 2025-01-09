@@ -2,7 +2,9 @@ package com.example.stride.presentation.auth.otpLoginScreen
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -14,6 +16,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -23,10 +26,12 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,13 +45,13 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import com.example.stride.R
 import com.example.stride.utility.composeUtility.CompletePreviews
 import com.example.stride.utility.composeUtility.OrientationPreviews
 import com.example.stride.utility.composeUtility.sdp
-import com.example.stride.utility.theme.textStyleInter12Lh18Fw400
-import com.example.stride.utility.theme.textStyleInter14Lh20Fw600
 import com.example.stride.utility.theme.textStyleInter16Lh18Fw700
 import com.example.stride.utility.theme.textStyleInter16Lh24Fw400
 import com.example.stride.utility.theme.textStyleInter24Lh28Fw600
@@ -54,21 +59,41 @@ import com.example.stride.utility.theme.textStyleInter24Lh28Fw600
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun OtpScreenResponsive(
-    uiStates: OtpStates,
+fun OtpLoginScreen(
+    uiStates: OtpLoginStates,
     onOtpChange: (String) -> Unit,
-    onOtpClick: (String) -> Unit,
-    onResendOtpClick: () -> Unit
+    onVerifyClick: (String) -> Unit,
+    onResendOtpClick: () -> Unit,
+    setOtp: (String) -> Unit
 ) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    var resendMessage by remember { mutableStateOf("") }
 
     val focusManager = LocalFocusManager.current
     var otp1 by remember { mutableStateOf("") }
     var otp2 by remember { mutableStateOf("") }
     var otp3 by remember { mutableStateOf("") }
     var otp4 by remember { mutableStateOf("") }
+    var timer by remember { mutableStateOf(60) }
+
+    val otp = otp1 + otp2 + otp3 + otp4
+    val isOtpCorrect = uiStates.isOtpVerified
+    Log.d("otp", otp)
+
+    LaunchedEffect(key1 = timer) {
+        if (timer > 0) {
+            kotlinx.coroutines.delay(1000L)
+            timer -= 1
+        }
+    }
+
+    if (uiStates?.isLoading == true) {
+        Dialog(onDismissRequest = {}) {
+            CircularProgressIndicator(color = colorResource(id = R.color.coral))
+        }
+    }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -77,22 +102,21 @@ fun OtpScreenResponsive(
     ) {
         val maxWidth = maxWidth
         val maxHeight = maxHeight
-        val horizontalPadding = if (maxWidth < 400.dp) 8.dp else 16.dp
-        val otpFieldWidth = maxWidth / 8
-        val otpFieldHeight = maxHeight / 14
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = horizontalPadding)
-                .verticalScroll(rememberScrollState()),
+                .padding(horizontal = 24.dp)
+                .verticalScroll(rememberScrollState())
+                .imePadding(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(maxHeight * 0.13f))
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        top = if (isLandscape) screenWidth / 15 else screenWidth / 10,
                         bottom = if (isLandscape) screenWidth / 20 else screenWidth / 8
                     ),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -109,41 +133,148 @@ fun OtpScreenResponsive(
                 )
             }
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = screenWidth / 25),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                listOf(otp1, otp2, otp3, otp4).forEachIndexed { index, otp ->
+            Column {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 10.sdp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
                     OutlinedTextField(
-                        value = otp,
+                        value = otp1,
                         onValueChange = {
-                            when (index) {
-                                0 -> otp1 = it
-                                1 -> otp2 = it
-                                2 -> otp3 = it
-                                3 -> otp4 = it
+                            if (it.length <= 1) otp1 = it
+                            if (it.isNotEmpty()) {
+                                focusManager.moveFocus(FocusDirection.Next)
                             }
-                            if (it.length == 1) focusManager.moveFocus(FocusDirection.Next)
+                            if (it.isEmpty()) {
+                                focusManager.clearFocus()
+                            }
+                            setOtp(otp1 + otp2 + otp3 + otp4)
+
                         },
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Number,
-                            imeAction = if (index == 3) ImeAction.Done else ImeAction.Next
+                        shape = RoundedCornerShape(10.sdp),
+                        modifier = Modifier
+                            .padding(top = 10.sdp)
+                            .width(50.sdp),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Next,
+                            keyboardType = KeyboardType.Number
                         ),
                         keyboardActions = KeyboardActions(
-                            onNext = { focusManager.moveFocus(FocusDirection.Next) },
-                            onDone = { onOtpClick(otp1 + otp2 + otp3 + otp4) }
+                            onNext = { focusManager.moveFocus(FocusDirection.Next) }
                         ),
-                        shape = RoundedCornerShape(14.dp),
-                        modifier = Modifier
-                            .width(otpFieldWidth)
-                            .height(otpFieldHeight)
-                            .padding(horizontal = 4.dp),
+                        textStyle = textStyleInter16Lh24Fw400().copy(textAlign = TextAlign.Start),
+                        maxLines = 1,
+                        isError = uiStates.isOtpValid == false,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = colorResource(id = R.color.coral),
-                            unfocusedBorderColor = colorResource(id = R.color.font_500)
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
+                            errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
+                            cursorColor = Color.White
+                        ),
+
+                        )
+                    OutlinedTextField(
+                        value = otp2,
+                        onValueChange = {
+                            if (it.length <= 1) otp2 = it
+                            if (it.isNotEmpty()) {
+                                focusManager.moveFocus(FocusDirection.Next)
+                            }
+                            if (it.isEmpty()) focusManager.moveFocus(FocusDirection.Previous)
+                            setOtp(otp1 + otp2 + otp3 + otp4)
+
+                        },
+                        shape = RoundedCornerShape(10.sdp),
+                        modifier = Modifier
+                            .padding(top = 10.sdp)
+                            .width(50.sdp),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Done,
+                            keyboardType = KeyboardType.Number
+                        ),
+                        textStyle = textStyleInter16Lh24Fw400().copy(textAlign = TextAlign.Start),
+                        keyboardActions = KeyboardActions(
+                            onNext = { focusManager.moveFocus(FocusDirection.Next) }
+                        ),
+                        maxLines = 1,
+                        isError = uiStates?.isOtpValid == false,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
+                            errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
+                            cursorColor = Color.White
+                        )
+                    )
+                    OutlinedTextField(
+                        value = otp3,
+                        onValueChange = {
+                            if (it.length <= 1) otp3 = it
+                            if (it.isNotEmpty()) {
+                                focusManager.moveFocus(FocusDirection.Next)
+                            }
+                            if (it.isEmpty()) {
+                                focusManager.moveFocus(FocusDirection.Previous)
+                            }
+                            setOtp(otp1 + otp2 + otp3 + otp4)
+
+                        },
+                        shape = RoundedCornerShape(10.sdp),
+                        modifier = Modifier
+                            .padding(top = 10.sdp)
+                            .width(50.sdp),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Done,
+                            keyboardType = KeyboardType.Number
+                        ),
+                        textStyle = textStyleInter16Lh24Fw400().copy(textAlign = TextAlign.Start),
+                        keyboardActions = KeyboardActions(
+                            onNext = { focusManager.moveFocus(FocusDirection.Next) }
+                        ),
+                        maxLines = 1,
+                        isError = uiStates?.isOtpValid == false,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
+                            errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
+                            cursorColor = Color.White
+                        )
+                    )
+                    OutlinedTextField(
+                        value = otp4,
+                        onValueChange = {
+                            if (it.length <= 1) {
+                                otp4 = it
+                                if (it.isNotEmpty()) {
+                                    focusManager.moveFocus(FocusDirection.Next)
+                                }
+                                if (it.isEmpty()) {
+                                    focusManager.moveFocus(FocusDirection.Previous)
+                                }
+                            }
+                            setOtp(otp1 + otp2 + otp3 + otp4)
+                        },
+                        shape = RoundedCornerShape(10.sdp),
+                        modifier = Modifier
+                            .padding(top = 10.sdp)
+                            .width(50.sdp),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Done,
+                            keyboardType = KeyboardType.Number
+                        ),
+                        textStyle = textStyleInter16Lh24Fw400().copy(textAlign = TextAlign.Start),
+                        keyboardActions = KeyboardActions(
+                            onNext = { focusManager.moveFocus(FocusDirection.Next) }
+                        ),
+                        maxLines = 1,
+                        isError = uiStates?.isOtpValid == false,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
+                            errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
+                            cursorColor = Color.White
                         )
                     )
                 }
@@ -156,36 +287,70 @@ fun OtpScreenResponsive(
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Button(
-                onClick = { onOtpClick(otp1 + otp2 + otp3 + otp4) },
-                modifier = Modifier
-                    .height(50.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(25.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral))
-            ) {
-                Text(text = "Verify", color = Color.Black, style = textStyleInter16Lh18Fw700())
+            if (resendMessage.isNotEmpty()) {
+                Text(
+                    text = resendMessage,
+                    color = Color.Green,
+                    modifier = Modifier.padding(top = 8.dp),
+                    style = textStyleInter16Lh24Fw400()
+                )
             }
 
-            FlowRow(
+            Spacer(modifier = Modifier.weight(1f))
+            Column(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(vertical = maxHeight / 20)
+                    .padding(vertical = 50.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "Didn’t receive the code?",
-                    color = colorResource(id = R.color.font_500),
-                    style = textStyleInter12Lh18Fw400()
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = "Resend",
-                    color = colorResource(id = R.color.light_coral),
-                    style = textStyleInter14Lh20Fw600()
-                )
+                Button(
+                    onClick = {
+                        if (otp.length == 4) {
+                            onVerifyClick(otp)
+                        }
+                    },
+                    modifier = Modifier
+                        .height(50.dp)
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(25.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral))
+                ) {
+                    Text(text = "Verify", color = Color.Black, style = textStyleInter16Lh18Fw700())
+                }
+
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
+
+                if (timer > 0) {
+                    Text(
+                        text = "Resend code in $timer s",
+                        color = colorResource(id = R.color.font_500),
+                        style = textStyleInter16Lh24Fw400()
+                    )
+                } else {
+                    FlowRow(
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .clickable {
+                                onResendOtpClick()
+                                resendMessage = "A new OTP has been sent to your email."
+                                timer = 60 // Reset the timer value here
+                            }
+                    ) {
+
+                        Text(
+                            text = "Didn’t receive the code?",
+                            color = colorResource(id = R.color.font_500),
+                            style = textStyleInter16Lh24Fw400()
+                        )
+
+                        Spacer(modifier = Modifier.width(4.dp))
+
+                        Text(
+                            text = "Resend",
+                            color = colorResource(id = R.color.light_coral),
+                            style = textStyleInter16Lh24Fw400()
+                        )
+                    }
+                }
             }
         }
     }
@@ -194,10 +359,11 @@ fun OtpScreenResponsive(
 @CompletePreviews
 @Composable
 fun PreviewOtpScreenResponsive() {
-    OtpScreenResponsive(
-        uiStates = OtpStates(),
+    OtpLoginScreen(
+        uiStates = OtpLoginStates(),
         onOtpChange = {},
-        onOtpClick = {},
-        onResendOtpClick = {}
+        onVerifyClick = {},
+        onResendOtpClick = {},
+        setOtp = {}
     )
 }

@@ -43,9 +43,8 @@ import com.example.stride.utility.composeUtility.CompletePreviews
 import com.example.stride.utility.composeUtility.OrientationPreviews
 import androidx.compose.ui.window.Dialog
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.icons.Icons
-//import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Icon
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.ImeAction
 import com.example.stride.utility.composeUtility.sdp
 import com.example.stride.utility.theme.textStyleInter12Lh18Fw500
@@ -56,11 +55,12 @@ import com.example.stride.utility.theme.textStyleInter24Lh28Fw600
 @Composable
 fun GetStartedScreen(
     uiStates: GetStartedStates? = GetStartedStates(),
-    onContinueClick: () -> Unit = {},
+    onContinueClick: (String) -> Unit = {},
     onContinueWithGoogleClick: () -> Unit = {},
     setEmail: (String) -> Unit = {},
     navController: NavHostController
 ) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     if (uiStates?.isLoading == true) {
         Dialog(onDismissRequest = {}) {
@@ -76,14 +76,15 @@ fun GetStartedScreen(
             .fillMaxSize()
             .background(colorResource(id = R.color.background_color))
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 16.dp),
+            .padding(vertical = 50.dp),
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "App Logo",
             modifier = Modifier
-                .size(80.dp)
-                .padding(bottom = 24.dp)
+                .width(screenWidth * 0.3f)
+                .height(80.dp)
+
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -92,7 +93,9 @@ fun GetStartedScreen(
             text = "Get Started",
             textAlign = TextAlign.Left,
             style = textStyleInter24Lh28Fw600(),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -107,23 +110,27 @@ fun GetStartedScreen(
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = colorResource(id = R.color.coral),
                 focusedLabelColor = colorResource(id = R.color.coral),
-                focusedTextColor = colorResource(id = R.color.white)
+                focusedTextColor = colorResource(id = R.color.white),
+                cursorColor = Color.White
+
             ),
             isError = uiStates?.isEmailValid == false,
             singleLine = true,
             textStyle = textStyleInter16Lh24Fw400().copy(textAlign = TextAlign.Start),
             shape = MaterialTheme.shapes.medium,
-          /*  trailingIcon = {
+            trailingIcon = {
                 if (uiStates?.isEmailValid == false) {
                     Icon(
-                        imageVector = R.drawable.email_error,
+                        painter = painterResource(id = R.drawable.email_error),
                         contentDescription = "Error",
                         tint = colorResource(id = R.color.error_color)
                     )
                 }
-            },*/
+            },
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+
         )
         if (uiStates?.isEmailValid == false)
             Text(
@@ -132,17 +139,21 @@ fun GetStartedScreen(
                 style = textStyleInter12Lh18Fw500(),
                 modifier = Modifier
                     .padding(start = 20.sdp, top=8.sdp)
-                    .align(Alignment.Start),
+                    .align(Alignment.Start)
+                    .padding(horizontal = 24.dp)
+
             )
 
         Spacer(modifier = Modifier.height(46.dp))
 
         Button(
-            onClick = onContinueClick,
+            onClick = { onContinueClick( uiStates?.email ?: "") },
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral)),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
+                .padding(horizontal = 24.dp)
+
         ) {
             Text(text = "Continue",
                 color = colorResource(id = R.color.black),
@@ -152,7 +163,10 @@ fun GetStartedScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+            ,
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -184,15 +198,30 @@ fun GetStartedScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
+                .padding(horizontal = 24.dp)
+
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(id = R.drawable.icon_google),
-                    contentDescription = "Google Logo",
-                    modifier = Modifier.size(24.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "Continue with Google", color = colorResource(id = R.color.coral), style = textStyleInter16Lh18Fw700())
+            if (uiStates != null) {
+                if (uiStates.isLoading) {
+                    CircularProgressIndicator(
+                        color = colorResource(id = R.color.coral),
+                        modifier = Modifier.size(24.dp)
+                    )
+                } else {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            painter = painterResource(id = R.drawable.icon_google),
+                            contentDescription = "Google Logo",
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Continue with Google",
+                            color = colorResource(id = R.color.coral),
+                            style = textStyleInter16Lh18Fw700()
+                        )
+                    }
+                }
             }
         }
     }

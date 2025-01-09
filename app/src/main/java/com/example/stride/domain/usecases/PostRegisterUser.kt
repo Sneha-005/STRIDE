@@ -1,12 +1,10 @@
 package com.example.stride.domain.usecases
 
-import android.util.Log
-import com.example.stride.data.remote.isRegistered
+import com.example.stride.data.remote.dto.isRegistered
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.utility.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import okhttp3.MultipartBody
 import timber.log.Timber
 import javax.inject.Inject
 
