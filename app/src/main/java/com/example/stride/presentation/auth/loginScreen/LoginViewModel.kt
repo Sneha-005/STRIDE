@@ -11,7 +11,6 @@ import com.example.stride.domain.sharedModels.UserRepository
 import com.example.stride.presentation.auth.Screen
 import com.example.stride.utility.composeUtility.isValidEmail
 import com.example.stride.utility.composeUtility.isValidPassword
-import com.example.stride.utility.composeUtility.toMultipart
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -84,7 +83,6 @@ class LoginViewModel @Inject constructor(
                     isLoading = true
                 )
                 val call = apiServicesRepository.loginUser(
-                    authorization = apiKey,
                     email = (_uiStates.value.email?: ""),
                     password = (_uiStates.value.password ?: "")
                 )
@@ -98,7 +96,10 @@ class LoginViewModel @Inject constructor(
                                 isLoading = false,
                                 loginState = true
                             )
-                            navHostController.navigate("dashboard")
+                            viewModelScope.launch {
+                                dataStoreRepository.saveToken(response.body()?.token ?: "")
+                                navHostController.navigate("dashboard")
+                            }
                             Log.d("LoginViewModel", "Response: ${response.body()}")
                         } else {
                             _uiStates.value = _uiStates.value.copy(

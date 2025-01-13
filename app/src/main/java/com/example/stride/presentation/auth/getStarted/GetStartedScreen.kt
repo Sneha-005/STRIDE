@@ -1,7 +1,11 @@
 package com.example.stride.presentation.auth.getStarted
 
 import android.app.Activity
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -44,13 +48,19 @@ import com.example.stride.utility.composeUtility.OrientationPreviews
 import androidx.compose.ui.window.Dialog
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import com.example.stride.utility.composeUtility.sdp
 import com.example.stride.utility.theme.textStyleInter12Lh18Fw500
 import com.example.stride.utility.theme.textStyleInter16Lh18Fw700
 import com.example.stride.utility.theme.textStyleInter16Lh24Fw400
 import com.example.stride.utility.theme.textStyleInter24Lh28Fw600
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 
 @Composable
 fun GetStartedScreen(
@@ -60,6 +70,8 @@ fun GetStartedScreen(
     setEmail: (String) -> Unit = {},
     navController: NavHostController
 ) {
+    val context = LocalContext.current
+
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     if (uiStates?.isLoading == true) {

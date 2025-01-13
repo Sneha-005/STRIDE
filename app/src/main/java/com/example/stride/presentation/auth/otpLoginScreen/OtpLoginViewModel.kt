@@ -9,7 +9,6 @@ import com.example.stride.data.local.ResetDataStore
 import com.example.stride.data.remote.dto.OtpLoginDto
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.domain.sharedModels.UserRepository
-import com.example.stride.utility.composeUtility.toMultipart
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -47,6 +46,14 @@ class OtpLoginViewModel @Inject constructor(
         _uiStates.value = _uiStates.value.copy(otp = otp)
     }
     fun onVerifyClick(otp: String, navHostController: NavHostController) {
+        if (otp.isEmpty()) {
+            _uiStates.value = _uiStates.value.copy(
+                isOtpValid = false,
+                errorOtpMessage = "Code cannot be empty"
+            )
+            return
+        }
+
         Log.d("OtpLoginViewModel", "OTP Verification started with OTP: $otp")
         Log.d("OtpLoginScreen", "OTP Length: ${otp.length}")
 
@@ -63,7 +70,6 @@ class OtpLoginViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 try {
                     val call = apiServicesRepository.otpLogin(
-                        authorization = apiKey,
                         email = user.getValues().email ?: "",
                         otp = otp
                     )
@@ -104,7 +110,6 @@ class OtpLoginViewModel @Inject constructor(
             setOtpError(true)
         }
     }
-
     fun setOtpValid(isOtpValid: Boolean) {
         _uiStates.value = _uiStates.value.copy(isOtpValid = isOtpValid)
     }

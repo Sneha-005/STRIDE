@@ -57,7 +57,6 @@ class NewPasswordViewModel@Inject constructor(
                     val resetPasswordToken = resetDataStore.getResetPasswordToken()
                     Log.d("reset_t","onSavePasswordCLick: ${resetPasswordToken}")
                     val call = apiServicesRepository.newPassword(
-                        authorization = "Bearer ${resetPasswordToken}",
                         password =( _uiStates.value.password?:""),
                         email = (user.getValues().email?:"")
                     )

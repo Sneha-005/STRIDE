@@ -1,22 +1,17 @@
 package com.example.stride.presentation.auth.getStarted
 
-import android.annotation.SuppressLint
 import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import com.example.stride.data.local.DataStoreRepository
 import com.example.stride.data.remote.dto.OauthDto
 import com.example.stride.data.remote.dto.isRegistered
-import com.example.stride.domain.models.OauthRequest
 import com.example.stride.domain.models.UserModel
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.domain.sharedModels.UserRepository
-import com.example.stride.domain.usecases.PostRegisterUser
-import com.example.stride.presentation.auth.Screen
 import com.example.stride.utility.composeUtility.isValidEmail
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,13 +36,11 @@ data class GetStartedStates(
 
 @HiltViewModel
 class GetStartedViewModel @Inject constructor(
-    private val googleAuthUiClient: GoogleAuthUiClient,
     private val dataStoreRepository: DataStoreRepository,
-    private val postRegisterUser: PostRegisterUser,
     private val apiServicesRepository: ApiServicesRepository,
-    private val apiKey: String,
     private val userRepository: UserRepository
-): ViewModel() {
+) : ViewModel() {
+
     private val _uiStates = MutableStateFlow(GetStartedStates())
     val uiStates: StateFlow<GetStartedStates> = _uiStates.asStateFlow()
 
@@ -60,35 +53,34 @@ class GetStartedViewModel @Inject constructor(
     }
 
     fun onContinueClick(navController: NavHostController) {
-        if (_uiStates.value.email?.isValidEmail() == true) {
+        val email = _uiStates.value.email
+
+        if (email?.isValidEmail() == true) {
             _uiStates.value = _uiStates.value.copy(isEmailValid = true, isLoading = true)
-
             viewModelScope.launch(Dispatchers.IO) {
-                Log.d("API_CALL", "Making API call with email: ${_uiStates.value.email}")
-
-                val call = apiServicesRepository.registerUser(_uiStates.value.email ?: "")
+                val call = apiServicesRepository.registerUser(email)
                 call.enqueue(object : Callback<isRegistered> {
-                    @SuppressLint("TimberArgCount")
                     override fun onResponse(call: Call<isRegistered>, response: Response<isRegistered>) {
                         _uiStates.value = _uiStates.value.copy(isLoading = false)
+
                         if (response.isSuccessful) {
                             val message = response.body()?.message
-                            userRepository.setValues(UserModel(email = _uiStates.value.email))
-                            _uiStates.value = _uiStates.value.copy(registrationState = true)
+                            userRepository.setValues(UserModel(email = email))
+
                             when (message) {
-                                "Go to login" -> navController.navigate("login_screen/${_uiStates.value.email}")
-                                "Go to SignUp" -> navController.navigate("signUp_screen")
-                                else -> _uiStates.value = _uiStates.value.copy(isEmailValid = false, errorEmailMessage = "Invalid Email")
+                                "Go to login" -> navController.navigate("login_screen/$email")
+                                "Go to SignUP" -> navController.navigate("sign_up_screen/$email")
+                                else -> _uiStates.value = _uiStates.value.copy(
+                                    isEmailValid = false,
+                                    errorEmailMessage = "Invalid Email"
+                                )
                             }
                         } else {
                             Log.e("API_CALL", "Error: Response Code: ${response.code()}")
-                            try {
-                                val errorBody = response.errorBody()?.string()
-                                Log.e("API_CALL", "Error: $errorBody")
-                            } catch (e: Exception) {
-                                Log.e("API_CALL", "Error: Unable to parse error body")
-                            }
-                            _uiStates.value = _uiStates.value.copy(isEmailValid = false, errorEmailMessage = "Registration failed")
+                            _uiStates.value = _uiStates.value.copy(
+                                isEmailValid = false,
+                                errorEmailMessage = "Registration failed"
+                            )
                         }
                     }
 
@@ -103,50 +95,46 @@ class GetStartedViewModel @Inject constructor(
         }
     }
 
-    fun onContinueWithGoogleClick(launcher: ActivityResultLauncher<IntentSenderRequest>) {
-        viewModelScope.launch {
-            val signInIntentSender = googleAuthUiClient.signIn()
-            launcher.launch(IntentSenderRequest.Builder(signInIntentSender ?: return@launch).build())
-        }
-    }
-
-    fun onSignInResult(result: SignInResult, navController: NavHostController) {
-        if (result.data != null) {
-            val email = result.data?.email
-            _uiStates.update { it.copy(isLoading = true) }
+    fun onContinueWithGoogle(account: GoogleSignInAccount, navController: NavHostController) {
+        val idToken = account.idToken
+        Log.d("GoogleSignIn", "ID Token: $idToken")
+        if (idToken != null) {
+            _uiStates.value = _uiStates.value.copy(isLoading = true)
 
             viewModelScope.launch(Dispatchers.IO) {
-                val call = apiServicesRepository.oauth(OauthRequest(email = email ?: "").toString())
-                Log.d("email", "$email")
+                val call = apiServicesRepository.oauth(idToken)
                 call.enqueue(object : Callback<OauthDto> {
-                    override fun onResponse(
-                        call: Call<OauthDto>,
-                        response: Response<OauthDto>
-                    ) {
-                        _uiStates.update { it.copy(isLoading = false) }
+                    override fun onResponse(call: Call<OauthDto>, response: Response<OauthDto>) {
+                        _uiStates.value = _uiStates.value.copy(isLoading = false)
 
                         if (response.isSuccessful) {
                             val message = response.body()?.message
-                            userRepository.setValues(UserModel(email = response.body()?.user?.email ?: ""))
+                            userRepository.setValues(UserModel(email = account.email))
                             navController.navigate("dashboard")
                         } else {
-                            Log.e("GOOGLE_API", "Error: Response Code: ${response.code()}")
-                            Log.d("resp", "${response.body()}")
-
-                            _uiStates.update { it.copy(isEmailValid = false, errorEmailMessage = "Google sign-in failed") }
+                            Log.e("API_CALL", "Error: Response Code: ${response.code()}")
+                            _uiStates.value = _uiStates.value.copy(
+                                isEmailValid = false,
+                                errorEmailMessage = "Google Sign-In authentication failed"
+                            )
                         }
                     }
 
                     override fun onFailure(call: Call<OauthDto>, t: Throwable) {
-                        Log.e("GOOGLE_API", "Failure: ${t.localizedMessage}")
-                        _uiStates.update { it.copy(isLoading = false, isEmailValid = false, errorEmailMessage = "Google sign-in error") }
+                        _uiStates.value = _uiStates.value.copy(isLoading = false)
+                        Log.e("API_CALL", "Error: ${t.localizedMessage}")
                     }
                 })
             }
         } else {
-            _uiStates.update { it.copy(isSignInSuccessful = false, signInError = result.errorMessage) }
+            Log.e("GoogleSignIn", "Error: No ID Token found.")
+            _uiStates.value = _uiStates.value.copy(
+                isEmailValid = false,
+                errorEmailMessage = "Google Sign-In failed"
+            )
         }
     }
+
 
     fun resetState() {
         _uiStates.update { GetStartedStates() }

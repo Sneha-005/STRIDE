@@ -1,18 +1,21 @@
 package com.example.stride.data.remote
 
-import androidx.browser.trusted.Token
 import com.example.stride.data.remote.dto.LoginResponseDto
 import com.example.stride.data.remote.dto.NewPasswordDto
 import com.example.stride.data.remote.dto.OauthDto
 import com.example.stride.data.remote.dto.OtpLoginDto
+import com.example.stride.data.remote.dto.OtpSignUpDto
 import com.example.stride.data.remote.dto.ResetPasswordDto
+import com.example.stride.data.remote.dto.SignUpDto
 import com.example.stride.data.remote.dto.isRegistered
 import com.example.stride.domain.models.LoginRequest
 import com.example.stride.domain.models.NewPasswordRequest
 import com.example.stride.domain.models.OauthRequest
 import com.example.stride.domain.models.OtpLoginRequest
+import com.example.stride.domain.models.OtpSignUpRequest
 import com.example.stride.domain.models.RegisterRequest
 import com.example.stride.domain.models.ResetPasswordRequest
+import com.example.stride.domain.models.SignUpRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Header
@@ -44,7 +47,6 @@ interface ApiServices {
 
     @PUT("reset-password")
     fun newPassword(
-        @Header("Authorization") token: String,
         @Body newPasswordRequest: NewPasswordRequest
     ): Call<NewPasswordDto>
 
@@ -52,4 +54,14 @@ interface ApiServices {
     fun oauth(
         @Body oauthRequest: OauthRequest
     ): Call<OauthDto>
+
+    @POST("register")
+    fun signUp(
+        @Body signUpRequest: SignUpRequest
+    ): Call<SignUpDto>
+
+    @POST("validate")
+    fun otpSignUp(
+        @Body otpSignUpRequest : OtpSignUpRequest
+    ): Call<OtpSignUpDto>
 }

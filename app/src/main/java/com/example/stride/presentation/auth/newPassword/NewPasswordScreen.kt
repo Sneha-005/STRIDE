@@ -111,7 +111,7 @@ fun NewPasswordScreen(
                     val image = if (isPasswordVisible)
                         painterResource(id = R.drawable.eye_closed)
                     else
-                        painterResource(id = R.drawable.eye_open) // eye_open
+                        painterResource(id = R.drawable.eye_open)
 
                     IconButton(
                         onClick = { isPasswordVisible = !isPasswordVisible },
@@ -162,8 +162,8 @@ fun NewPasswordScreen(
                             .clip(RoundedCornerShape(4.dp))
                             .background(
                                 when {
-                                    strength >= 3 -> Color.Green
-                                    strength >= 1 -> Color.Yellow
+                                    strength == 4 -> Color.Green
+                                    strength == 2 -> Color.Yellow
                                     else -> Color.LightGray
                                 }
                             )
@@ -189,7 +189,11 @@ fun NewPasswordScreen(
                             .padding(start = 8.dp)
                             .clip(RoundedCornerShape(4.dp))
                             .background(
-                                if (strength >= 3) Color.Green else Color.LightGray
+                                when {
+                                    strength == 4 -> Color.Green
+                                    strength == 2 -> Color.Yellow
+                                    else -> Color.LightGray
+                                }
                             )
                     )
                 }
@@ -257,7 +261,7 @@ fun NewPasswordScreen(
                         isConfirmPasswordFieldFocused = focusState.isFocused
                     }
             )
-            if (uiStates.isPasswordValid == false)
+            if (uiStates.isConfirmPasswordValid == false)
                 Text(
                     text = uiStates.errorPasswordMessage,
                     color = colorResource(id = R.color.error_color),
