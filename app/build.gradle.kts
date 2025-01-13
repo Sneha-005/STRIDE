@@ -101,7 +101,4 @@ dependencies {
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
 
-    implementation(libs.tensorflow.lite)
-    implementation(libs.tensorflow.lite.gpu.v2110)
-    implementation(libs.tensorflow.lite.support)
 }

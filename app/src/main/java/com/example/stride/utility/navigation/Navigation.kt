@@ -88,7 +88,6 @@ fun Navigation() {
         composable("splash_screen") {
 
             Column {
-                TopBar(onBackClick = { (context as? Activity)?.finishAffinity() })
                 if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                     SplashScreenLandscape(navController)
                 } else {
@@ -100,22 +99,15 @@ fun Navigation() {
             val viewModel: GetStartedViewModel = hiltViewModel()
             val state by viewModel.uiStates.collectAsStateWithLifecycle()
 
-//            val googleSignInClient = remember {
-//                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                    .requestEmail()
-//                    .requestProfile()
-////                    .requestIdToken("1003392708014-8g4i9b96kdq475anvkui9oru8nuktopk.apps.googleusercontent.com")
-//                    .build()
-//                GoogleSignIn.getClient(context, gso)
-//            }
-            val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail() // Requests the user's email
-                .requestIdToken("1003392708014-8g4i9b96kdq475anvkui9oru8nuktopk.apps.googleusercontent.com")
-                .requestProfile()
-                .build()
+            val googleSignInClient = remember {
+                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .requestProfile()
+                    .requestIdToken("1003392708014-8g4i9b96kdq475anvkui9oru8nuktopk.apps.googleusercontent.com")
+                    .build()
+              GoogleSignIn.getClient(context, gso)
+            }
 
-
-            val googleSignInClient = GoogleSignIn.getClient(context, googleSignInOptions)
 
             val signInLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 Log.d("GoogleSignIn", "Result received: ${result.resultCode}")
@@ -125,6 +117,10 @@ fun Navigation() {
                     try {
                         val account = task.getResult(ApiException::class.java)
                         Log.d("GoogleSignIn", "Account selected: ${account.email}")
+                        Log.d("GoogleSignIn", "Account selected: ${account.id}")
+                        Log.d("GoogleSignIn", "Account selected: ${account.getIdToken()}")
+                        Log.d("GoogleSignIn", "Account selected: ${account.displayName}")
+                        Log.d("GoogleSignIn", "Account selected: ${account.photoUrl}")
                         viewModel.onContinueWithGoogle(account,navController)
                     } catch (e: ApiException) {
                         Log.w("GoogleSignIn", "signInResult:failed code=" + e.statusCode)
@@ -140,7 +136,6 @@ fun Navigation() {
                 }
             }
             Column {
-                TopBar (onBackClick = { (context as? Activity)?.finishAffinity() })
                 GetStartedScreen(
                     uiStates = state,
                     onContinueClick = { viewModel.onContinueClick(navController) },
