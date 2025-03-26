@@ -11,5 +11,18 @@ sealed class Screen(val route: String){
     object OtpLoginScreen : Screen("otp_login_screen")
     object NewPasswordScreen : Screen("new_password_screen")
     object OtpSignUpScreen: Screen("otp_sign_up_screen")
+    object LevelSelectorScreen : Screen("level_selector_screen")
+    object GoalSelectionScreen : Screen("goal_selection_screen")
+    object Questions : Screen("questions")
+    object RecipeScreen : Screen("recipe_screen")
+    object GoalUpdateScreen : Screen("goal_update_screen")
+    object EndDashboard : Screen("end_dashboard")
+    object ProfileScreen : Screen("profile_screen")
+    object UpdateProfileScreen : Screen("update_profile_screen")
+    object DailyGoal : Screen("daily_goal")
+    object HomeScreen : Screen("home_screen")
+    object DailyGoalsScreen : Screen("daily_goals_screen")
+    object EmptyDietScreen : Screen("empty_diet_screen")
+    object CategoryScreen : Screen("category_screen")
 
 }

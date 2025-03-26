@@ -1,0 +1,167 @@
+[33mcommit c091a039b20bd41cff61a3381b2ccbb45f055d8e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: [example] <[bansalsneha991]>
+Date:   Wed Feb 12 23:19:05 2025 +0530
+
+    preference screen added
+
+[1mdiff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml[m
+[1mindex 04ab75d..90bf48e 100644[m
+[1m--- a/app/src/main/res/values/strings.xml[m
+[1m+++ b/app/src/main/res/values/strings.xml[m
+[36m@@ -2,6 +2,18 @@[m
+     <string name="app_name">Stride</string>[m
+     <!-- TODO: Remove or change this placeholder text -->[m
+     <string name="hello_blank_fragment">Hello blank fragment</string>[m
+[31m-    <string name="server_client_id">960263820346-sivuehaobtd2k06esk5co9hjb7cnokft.apps.googleusercontent.com</string>[m
+[31m-  <!--  <string name="client_secret">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</string>-->[m
+[32m+[m[32m    <string name="server_client_id">1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com</string>[m
+[32m+[m[32m    <string name="steps_count">%d Steps</string>[m
+[32m+[m[32m    <string name="permission_rationale_dialog_title">Permission needed</string>[m
+[32m+[m[32m    <string name="permission_rationale_dialog_message">This app requires permission to access your Activity. Please Allow.</string>[m
+[32m+[m[32m    <string name="permission_fully_denied">Please allow permission to access your Activity. Go to settings to enable</string>[m
+[32m+[m[32m    <string name="cancel">Cancel</string>[m
+[32m+[m[32m    <string name="ok">Okay</string>[m
+[32m+[m[32m    <string name="no_record">No Steps recorded for today</string>[m
+[32m+[m[32m    <string name="notification_channel_name">Step Updates</string>[m
+[32m+[m[32m    <string name="charts_nav">Navigate to Charts</string>[m
+[32m+[m[32m    <string name="set_target">Set Steps target</string>[m
+[32m+[m[32m    <string name="daily_target">Set a daily target to stay active and healthy</string>[m
+[32m+[m[32m    <string name="target_header">Daily Target</string>[m
+[32m+[m[32m    <string name="back">Back</string>[m
+ </resources>[m
+\ No newline at end of file[m
+
+[33mcommit b9b106241ce5ad889dbc7e9bc8c0e7dc776c27cb[m
+Author: [example] <[bansalsneha991]>
+Date:   Thu Jan 23 21:50:43 2025 +0530
+
+    added home pages ui
+
+[1mdiff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml[m
+[1mindex 0df0d38..7eca4e5 100644[m
+[1m--- a/app/src/main/res/values/strings.xml[m
+[1m+++ b/app/src/main/res/values/strings.xml[m
+[36m@@ -2,5 +2,6 @@[m
+     <string name="app_name">Stride</string>[m
+     <!-- TODO: Remove or change this placeholder text -->[m
+     <string name="hello_blank_fragment">Hello blank fragment</string>[m
+[31m-    <string name="web_client_id">1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com</string>[m
+[32m+[m[32m    <string name="server_client_id">960263820346-sivuehaobtd2k06esk5co9hjb7cnokft.apps.googleusercontent.com</string>[m
+[32m+[m[32m    <string name="client_secret">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</string>[m
+ </resources>[m
+\ No newline at end of file[m
+
+[33mcommit 259cea13a39cb7a9aa3046c042db8e57ffac1979[m
+Author: [example] <[bansalsneha991]>
+Date:   Mon Jan 13 17:29:18 2025 +0530
+
+    added auth
+
+[1mdiff --git a/app/google-services.json b/app/google-services.json[m
+[1mindex 46a2d95..7789333 100644[m
+[1m--- a/app/google-services.json[m
+[1m+++ b/app/google-services.json[m
+[36m@@ -14,16 +14,12 @@[m
+       },[m
+       "oauth_client": [[m
+         {[m
+[31m-          "client_id": "1003392708014-m95f2ch72jsq6lgu1m6dbqpg8og260ke.apps.googleusercontent.com",[m
+[32m+[m[32m          "client_id": "1003392708014-8g4i9b96kdq475anvkui9oru8nuktopk.apps.googleusercontent.com",[m
+           "client_type": 1,[m
+           "android_info": {[m
+             "package_name": "com.example.stride",[m
+             "certificate_hash": "b1a45fc4ea8026dc30afee7bb4f9f29ed2b56941"[m
+           }[m
+[31m-        },[m
+[31m-        {[m
+[31m-          "client_id": "1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com",[m
+[31m-          "client_type": 3[m
+         }[m
+       ],[m
+       "api_key": [[m
+[36m@@ -33,12 +29,7 @@[m
+       ],[m
+       "services": {[m
+         "appinvite_service": {[m
+[31m-          "other_platform_oauth_client": [[m
+[31m-            {[m
+[31m-              "client_id": "1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com",[m
+[31m-              "client_type": 3[m
+[31m-            }[m
+[31m-          ][m
+[32m+[m[32m          "other_platform_oauth_client": [][m
+         }[m
+       }[m
+     }[m
+
+[33mcommit 40c84dd7ed03affc262613ea5ef1a0cafbfc9273[m[33m ([m[1;32moauth[m[33m)[m
+Author: [example] <[bansalsneha991]>
+Date:   Sat Jan 4 22:36:00 2025 +0530
+
+    added login,getstarted ui
+
+[1mdiff --git a/app/google-services.json b/app/google-services.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..46a2d95[m
+[1m--- /dev/null[m
+[1m+++ b/app/google-services.json[m
+[36m@@ -0,0 +1,47 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "project_info": {[m
+[32m+[m[32m    "project_number": "1003392708014",[m
+[32m+[m[32m    "project_id": "strideapp-92489",[m
+[32m+[m[32m    "storage_bucket": "strideapp-92489.firebasestorage.app"[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "client": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m      "client_info": {[m
+[32m+[m[32m        "mobilesdk_app_id": "1:1003392708014:android:a8c424ac5417fb62592c3f",[m
+[32m+[m[32m        "android_client_info": {[m
+[32m+[m[32m          "package_name": "com.example.stride"[m
+[32m+[m[32m        }[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "oauth_client": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "client_id": "1003392708014-m95f2ch72jsq6lgu1m6dbqpg8og260ke.apps.googleusercontent.com",[m
+[32m+[m[32m          "client_type": 1,[m
+[32m+[m[32m          "android_info": {[m
+[32m+[m[32m            "package_name": "com.example.stride",[m
+[32m+[m[32m            "certificate_hash": "b1a45fc4ea8026dc30afee7bb4f9f29ed2b56941"[m
+[32m+[m[32m          }[m
+[32m+[m[32m        },[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "client_id": "1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com",[m
+[32m+[m[32m          "client_type": 3[m
+[32m+[m[32m        }[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "api_key": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "current_key": "AIzaSyAD7FcpdjCptVlU2Xj1smce5wMUf_yA6Ds"[m
+[32m+[m[32m        }[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "services": {[m
+[32m+[m[32m        "appinvite_service": {[m
+[32m+[m[32m          "other_platform_oauth_client": [[m
+[32m+[m[32m            {[m
+[32m+[m[32m              "client_id": "1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com",[m
+[32m+[m[32m              "client_type": 3[m
+[32m+[m[32m            }[m
+[32m+[m[32m          ][m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "configuration_version": "1"[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml[m
+[1mindex 6417caa..0df0d38 100644[m
+[1m--- a/app/src/main/res/values/strings.xml[m
+[1m+++ b/app/src/main/res/values/strings.xml[m
+[36m@@ -2,4 +2,5 @@[m
+     <string name="app_name">Stride</string>[m
+     <!-- TODO: Remove or change this placeholder text -->[m
+     <string name="hello_blank_fragment">Hello blank fragment</string>[m
+[32m+[m[32m    <string name="web_client_id">1003392708014-f5hulofvqu7hn34qs1bej6roik9aghaq.apps.googleusercontent.com</string>[m
+ </resources>[m
+\ No newline at end of file[m

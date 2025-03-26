@@ -109,7 +109,14 @@ class GetStartedViewModel @Inject constructor(
 
                         if (response.isSuccessful) {
                             val message = response.body()?.message
-                            userRepository.setValues(UserModel(email = account.email))
+                            val token = response.body()?.token
+                            viewModelScope.launch {
+                                dataStoreRepository.saveOauth(oauth = token.toString())
+                            }
+                            token?.let { UserModel(email = account.email, token = it) }
+                                ?.let { userRepository.setValues(it) }
+                            Log.d("API_CALL", "Token: $token")
+                            Log.d("API_CALL", "Response: $message")
                             navController.navigate("dashboard")
                         } else {
                             Log.e("API_CALL", "Error: Response Code: ${response.code()}")

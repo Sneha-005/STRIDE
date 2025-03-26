@@ -62,6 +62,17 @@ fun textStyleInter16Lh24Fw500(): TextStyle {
         fontSize = 16.ssp,
         lineHeight = 24.ssp,
         fontFamily = FontFamily(Font(R.font.nunito_sans)),
+        fontWeight = FontWeight(500)
+    )
+}
+
+@Composable
+fun textStyleInter16Lh24Fw600(): TextStyle {
+    return DefaultTextStyle.copy(
+        color = colorResource(id = R.color.font_500),
+        fontSize = 16.ssp,
+        lineHeight = 24.ssp,
+        fontFamily = FontFamily(Font(R.font.nunito_sans)),
         fontWeight = FontWeight(600)
     )
 }

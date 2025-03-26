@@ -118,8 +118,14 @@ fun LoginScreen(
             },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             colors = OutlinedTextFieldDefaults.colors(
+<<<<<<< HEAD
                 focusedBorderColor = colorResource(id = R.color.coral),
                 focusedLabelColor = colorResource(id = R.color.coral),
+=======
+                focusedBorderColor = colorResource(id = R.color.purple),
+                focusedLabelColor = colorResource(id = R.color.purple),
+                errorBorderColor = colorResource(id = R.color.error_color),
+>>>>>>> e55541d (added id)
                 focusedTextColor = colorResource(id = R.color.white)
             ),
             isError = emailError,
@@ -220,7 +226,7 @@ fun LoginScreen(
 
         Button(
             onClick = onLoginClick,
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral)),
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary0)),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
@@ -235,7 +241,7 @@ fun LoginScreen(
         Text(
             text = "Forgot Password?",
             style = textStyleInter14Lh16Fw700(),
-            color = colorResource(id = R.color.coral),
+            color = colorResource(id = R.color.primary0),
             modifier = Modifier
                 .padding(horizontal = 8.dp)
                 .align(alignment = Alignment.CenterHorizontally)

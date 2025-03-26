@@ -169,7 +169,7 @@ fun OtpLoginScreen(
                         maxLines = 1,
                         isError = uiStates.isOtpValid == false,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.purple),
                             unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
                             errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
                             cursorColor = Color.White
@@ -202,7 +202,7 @@ fun OtpLoginScreen(
                         maxLines = 1,
                         isError = uiStates?.isOtpValid == false,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.purple),
                             unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
                             errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
                             cursorColor = Color.White
@@ -236,7 +236,7 @@ fun OtpLoginScreen(
                         maxLines = 1,
                         isError = uiStates?.isOtpValid == false,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.purple),
                             unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
                             errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
                             cursorColor = Color.White
@@ -271,7 +271,7 @@ fun OtpLoginScreen(
                         maxLines = 1,
                         isError = uiStates?.isOtpValid == false,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.coral),
+                            focusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.purple),
                             unfocusedBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.font_500),
                             errorBorderColor = if (isOtpCorrect) Color.Green else colorResource(id = R.color.error_color),
                             cursorColor = Color.White
@@ -312,7 +312,7 @@ fun OtpLoginScreen(
                         .height(50.dp)
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(25.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral))
+                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary0))
                 ) {
                     Text(text = "Verify", color = Color.Black, style = textStyleInter16Lh18Fw700())
                 }

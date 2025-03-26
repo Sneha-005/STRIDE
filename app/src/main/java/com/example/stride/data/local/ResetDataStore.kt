@@ -1,4 +1,3 @@
-// Top-level declaration for app_preferences
 package com.example.stride.data.local
 
 import android.content.Context

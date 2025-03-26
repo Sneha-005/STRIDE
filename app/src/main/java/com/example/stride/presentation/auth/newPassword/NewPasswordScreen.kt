@@ -61,7 +61,7 @@ fun NewPasswordScreen(
 
     if (uiStates.isLoading) {
         Dialog(onDismissRequest = {}) {
-            CircularProgressIndicator(color = colorResource(id = R.color.coral))
+            CircularProgressIndicator(color = colorResource(id = R.color.primary0))
         }
     }
 
@@ -96,8 +96,8 @@ fun NewPasswordScreen(
                 Text("Password", color = colorResource(id = R.color.font_500))
             },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = colorResource(id = R.color.coral),
-                focusedLabelColor = colorResource(id = R.color.coral),
+                focusedBorderColor = colorResource(id = R.color.purple),
+                focusedLabelColor = colorResource(id = R.color.purple),
                 focusedTextColor = colorResource(id = R.color.white),
                 cursorColor = Color.White
             ),
@@ -227,8 +227,14 @@ fun NewPasswordScreen(
                     Text("Confirm Password", color = colorResource(id = R.color.font_500))
                 },
                 colors = OutlinedTextFieldDefaults.colors(
+<<<<<<< HEAD
                     focusedBorderColor = colorResource(id = R.color.coral),
                     focusedLabelColor = colorResource(id = R.color.coral),
+=======
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
+                    errorBorderColor = colorResource(id = R.color.error_color),
+>>>>>>> e55541d (added id)
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),
@@ -278,7 +284,7 @@ fun NewPasswordScreen(
             onClick = {
                 onSavePasswordClick()
             },
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral)),
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary0)),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

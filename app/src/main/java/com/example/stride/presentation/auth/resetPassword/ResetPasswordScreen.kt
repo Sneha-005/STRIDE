@@ -114,8 +114,8 @@ fun ResetPasswordScreen(
             label = { Text("Email", color = colorResource(id = R.color.font_500)) },
             placeholder = { Text("Input Text", color = colorResource(id = R.color.font_500)) },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = colorResource(id = R.color.coral),
-                focusedLabelColor = colorResource(id = R.color.coral),
+                focusedBorderColor = colorResource(id = R.color.purple),
+                focusedLabelColor = colorResource(id = R.color.purple),
                 focusedTextColor = colorResource(id = R.color.white),
                 cursorColor = Color.White
 
@@ -151,7 +151,7 @@ fun ResetPasswordScreen(
 
         Button(
             onClick = onVerificationCodeClick,
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral)),
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary0)),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

@@ -99,7 +99,7 @@ fun SignupScreen(
 
     if (uiStates?.isLoading == true) {
         Dialog(onDismissRequest = {}) {
-            CircularProgressIndicator(color = colorResource(id = R.color.coral))
+            CircularProgressIndicator(color = colorResource(id = R.color.primary0))
         }
     }
 
@@ -142,9 +142,17 @@ fun SignupScreen(
                 keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                 isError = emailError,
                 colors = OutlinedTextFieldDefaults.colors(
+<<<<<<< HEAD
                     focusedBorderColor = colorResource(id = R.color.coral),
                     focusedLabelColor = colorResource(id = R.color.coral),
                     focusedTextColor = colorResource(id = R.color.white)
+=======
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
+                    focusedTextColor = colorResource(id = R.color.white),
+                    errorBorderColor = colorResource(id = R.color.error_color),
+
+>>>>>>> e55541d (added id)
                 ),
                 singleLine = true,
                 readOnly = true,
@@ -174,8 +182,8 @@ fun SignupScreen(
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 singleLine = true,
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = colorResource(id = R.color.coral),
-                    focusedLabelColor = colorResource(id = R.color.coral),
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),
@@ -222,8 +230,8 @@ fun SignupScreen(
                     }
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = colorResource(id = R.color.coral),
-                    focusedLabelColor = colorResource(id = R.color.coral),
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),
@@ -273,8 +281,8 @@ fun SignupScreen(
                     }
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = colorResource(id = R.color.coral),
-                    focusedLabelColor = colorResource(id = R.color.coral),
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),
@@ -302,7 +310,7 @@ fun SignupScreen(
 
             Button(
                 onClick = onSignUpClick,
-                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral)),
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary0)),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(calculatedHeight)
