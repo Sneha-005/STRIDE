@@ -1,6 +1,5 @@
 package com.example.stride.presentation.auth.resetPassword
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
@@ -9,7 +8,6 @@ import com.example.stride.domain.models.UserModel
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.domain.sharedModels.UserRepository
 import com.example.stride.utility.composeUtility.isValidEmail
-import com.example.stride.utility.composeUtility.toMultipart
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -62,7 +60,6 @@ class ResetPasswordViewModel@Inject constructor(
                 try {
                     _uiStates.value = _uiStates.value.copy(isLoading = true)
                     val call = apiServicesRepository.resetPassword(
-                        authorization = apiKey,
                         email = _uiStates.value.email!!
                     )
                     call.enqueue(object : Callback<ResetPasswordDto> {

@@ -17,7 +17,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -103,7 +102,7 @@ fun SplashScreen(
                                 navHostController.navigate(Screen.GetStartedScreen.route)
                             }
                         },
-                        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.coral)),
+                        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.primary0)),
                         shape = MaterialTheme.shapes.extraLarge,
                         modifier = Modifier
                             .padding(horizontal = 16.dp)
@@ -205,7 +204,7 @@ fun SplashScreenLandscape(
                                 navHostController.navigate(Screen.GetStartedScreen.route)
                             }
                         },
-                        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.coral)),
+                        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.purple)),
                         shape = MaterialTheme.shapes.extraLarge,
                         modifier = Modifier
                             .padding(vertical = 8.dp)
@@ -302,7 +301,7 @@ fun Dot(isSelected: Boolean, size: androidx.compose.ui.unit.Dp) {
             .height(size)
             .width(if (isSelected) size * 3 else size)
             .background(
-                color = if (isSelected) colorResource(id = R.color.coral) else Color.Gray,
+                color = if (isSelected) colorResource(id = R.color.purple) else Color.Gray,
                 shape = CircleShape
             )
     )

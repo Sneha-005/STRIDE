@@ -1,14 +1,11 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
     dependencies {
-        classpath(libs.gradle.v811)
-        classpath (libs.google.services)
+        classpath("com.google.gms:google-services:4.3.15")
+        classpath(libs.gradle)
     }
 
 }
@@ -18,6 +15,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
     id("com.google.devtools.ksp") version "1.9.0-1.0.13" apply false
     id("androidx.room") version "2.6.1" apply false
+    id("org.jetbrains.kotlin.kapt") version "1.8.0" apply false
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.kotlin.jvm) apply false

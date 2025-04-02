@@ -1,13 +1,11 @@
 package com.example.stride.presentation.auth.newPassword
 
 import androidx.lifecycle.ViewModel
-import com.example.stride.data.local.DataStoreRepository
 import com.example.stride.data.remote.dto.NewPasswordDto
 import kotlinx.coroutines.Dispatchers
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import android.util.Log
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.example.stride.data.local.ResetDataStore
 import com.example.stride.domain.repository.ApiServicesRepository
@@ -15,7 +13,6 @@ import com.example.stride.domain.sharedModels.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 data class NewPasswordStates(
@@ -57,7 +54,6 @@ class NewPasswordViewModel@Inject constructor(
                     val resetPasswordToken = resetDataStore.getResetPasswordToken()
                     Log.d("reset_t","onSavePasswordCLick: ${resetPasswordToken}")
                     val call = apiServicesRepository.newPassword(
-                        authorization = "Bearer ${resetPasswordToken}",
                         password =( _uiStates.value.password?:""),
                         email = (user.getValues().email?:"")
                     )

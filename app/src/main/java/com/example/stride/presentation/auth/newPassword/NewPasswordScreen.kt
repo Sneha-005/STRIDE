@@ -1,8 +1,6 @@
 package com.example.stride.presentation.auth.newPassword
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +21,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.stride.R
@@ -61,7 +58,7 @@ fun NewPasswordScreen(
 
     if (uiStates.isLoading) {
         Dialog(onDismissRequest = {}) {
-            CircularProgressIndicator(color = colorResource(id = R.color.coral))
+            CircularProgressIndicator(color = colorResource(id = R.color.primary0))
         }
     }
 
@@ -70,7 +67,7 @@ fun NewPasswordScreen(
             .fillMaxSize()
             .background(colorResource(id = R.color.background_color))
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 84.dp),
+            .padding(horizontal = 24.dp, vertical = 6.dp),
     ) {
         Text(
             text = "Create a New Password",
@@ -96,9 +93,10 @@ fun NewPasswordScreen(
                 Text("Password", color = colorResource(id = R.color.font_500))
             },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = colorResource(id = R.color.coral),
-                focusedLabelColor = colorResource(id = R.color.coral),
+                focusedBorderColor = colorResource(id = R.color.purple),
+                focusedLabelColor = colorResource(id = R.color.purple),
                 focusedTextColor = colorResource(id = R.color.white),
+                errorBorderColor = colorResource(id = R.color.error_color),
                 cursorColor = Color.White
             ),
             maxLines = 1,
@@ -111,7 +109,7 @@ fun NewPasswordScreen(
                     val image = if (isPasswordVisible)
                         painterResource(id = R.drawable.eye_closed)
                     else
-                        painterResource(id = R.drawable.eye_open) // eye_open
+                        painterResource(id = R.drawable.eye_open)
 
                     IconButton(
                         onClick = { isPasswordVisible = !isPasswordVisible },
@@ -162,8 +160,8 @@ fun NewPasswordScreen(
                             .clip(RoundedCornerShape(4.dp))
                             .background(
                                 when {
-                                    strength >= 3 -> Color.Green
-                                    strength >= 1 -> Color.Yellow
+                                    strength == 4 -> Color.Green
+                                    strength == 2 -> Color.Yellow
                                     else -> Color.LightGray
                                 }
                             )
@@ -189,7 +187,11 @@ fun NewPasswordScreen(
                             .padding(start = 8.dp)
                             .clip(RoundedCornerShape(4.dp))
                             .background(
-                                if (strength >= 3) Color.Green else Color.LightGray
+                                when {
+                                    strength == 4 -> Color.Green
+                                    strength == 2 -> Color.Yellow
+                                    else -> Color.LightGray
+                                }
                             )
                     )
                 }
@@ -223,8 +225,9 @@ fun NewPasswordScreen(
                     Text("Confirm Password", color = colorResource(id = R.color.font_500))
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = colorResource(id = R.color.coral),
-                    focusedLabelColor = colorResource(id = R.color.coral),
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
+                    errorBorderColor = colorResource(id = R.color.error_color),
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),
@@ -257,7 +260,7 @@ fun NewPasswordScreen(
                         isConfirmPasswordFieldFocused = focusState.isFocused
                     }
             )
-            if (uiStates.isPasswordValid == false)
+            if (uiStates.isConfirmPasswordValid == false)
                 Text(
                     text = uiStates.errorPasswordMessage,
                     color = colorResource(id = R.color.error_color),
@@ -274,7 +277,7 @@ fun NewPasswordScreen(
             onClick = {
                 onSavePasswordClick()
             },
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coral)),
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary0)),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

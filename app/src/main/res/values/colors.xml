@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple">#FF9779F7</color>
+    <color name="light_purple">#FFB196FA</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="font_500">#B0B0B0</color>
-    <color name="font_600">#E7E7E7</color>
-    <color name="background_color">#232323</color>
-    <color name="coral">#FF6F61</color>
-    <color name="divider">#888888</color>
+    <color name="font_500">#FFB0B0B0</color>
+    <color name="font_600">#FFE7E7E7</color>
+    <color name="background_color">#FF232323</color>
+    <color name="sheet_color">#FF1a1a1d</color>
+    <color name="coral">#FFFF6F61</color>
+    <color name="divider">#FF888888</color>
     <color name="error_color">#FF4331</color>
     <color name="light_coral">#FFA8A0</color>
-    <color name="dark_gray">#4A4848</color>
+    <color name="lighter_gray">#FF909091</color>
+    <color name="dark_gray">#FF4A4848</color>
+    <color name="darker_gray">#FF2F2F32</color>
+    <color name="topBar">#FF1D1D1E</color>
+    <color name="primary_coral">#FFE4E1</color>
+    <color name="unselected">#D4C2FD</color>
+    <color name="selected">#DEF889</color>
+    <color name="charcoal">#FF384046</color>
+    <color name="light_gray">#FFB0B0B0</color>
+    <color name="primary0">#FFD9F779</color>
+    <color name="primary5">#FFF0FCC5</color>
+    <color name="blue_back">#FF262333</color>
 </resources>
