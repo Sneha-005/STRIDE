@@ -125,7 +125,7 @@ class StepCounterService : Service(), SensorEventListener {
             set(Calendar.MILLISECOND, 0)
 
             if (timeInMillis <= System.currentTimeMillis()) {
-                add(Calendar.DAY_OF_YEAR, 1) // Schedule for next day if time has passed
+                add(Calendar.DAY_OF_YEAR, 1)
             }
         }
 

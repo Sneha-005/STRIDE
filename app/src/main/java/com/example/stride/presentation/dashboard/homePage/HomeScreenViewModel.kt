@@ -76,7 +76,7 @@ class HomeScreenViewModel @Inject constructor(
     private var previousTotalSteps = 0f
 
     private val _stepCount = MutableStateFlow(0)
-    val stepCount = _stepCount.asStateFlow()
+    val stepCount: StateFlow<Int> = _stepCount.asStateFlow()
 
     private var _uiStates = MutableStateFlow(HomeScreenStates())
     val uiStates: StateFlow<HomeScreenStates> = _uiStates.asStateFlow()
@@ -382,7 +382,7 @@ class HomeScreenViewModel @Inject constructor(
         _uiStates.value = _uiStates.value.copy(stepCount = totalSteps.toInt())
         previousTotalSteps = totalSteps
         _stepCount.value = 0
-        sendStepCount(_uiStates.value.stepCount)
+        sendStepCount(0)
     }
 
     override fun onCleared() {

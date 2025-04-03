@@ -105,13 +105,12 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
             override fun onReceive(context: Context?, intent: Intent?) {
                 if (intent?.action == "com.example.stride.STEP_RESET") {
                     Log.d("HomeScreen", "Step reset detected. Updating UI.")
-                    dailySteps = 0  // Reset UI immediately
+                    dailySteps = 0
                 }
             }
         }
     }
 
-// Register receiver when HomeScreen is composed
     LaunchedEffect(Unit) {
         Log.d("HomeScreen", "Registering StepResetReceiver")
         context.registerReceiver(
@@ -122,7 +121,6 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
     }
 
 
-// Unregister receiver when screen is removed
     DisposableEffect(Unit) {
         onDispose {
             context.unregisterReceiver(stepResetReceiver)
