@@ -106,6 +106,7 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
                 if (intent?.action == "com.example.stride.STEP_RESET") {
                     Log.d("HomeScreen", "Step reset detected. Updating UI.")
                     dailySteps = 0
+                    viewModel.resetSteps()
                 }
             }
         }

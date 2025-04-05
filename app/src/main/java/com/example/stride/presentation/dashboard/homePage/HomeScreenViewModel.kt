@@ -111,6 +111,13 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
+    fun resetSteps() {
+        _uiStates.value = _uiStates.value.copy(stepCount = 0)
+        previousTotalSteps = totalSteps
+        _stepCount.value = 0
+        sendStepCount(0)
+    }
+
     override fun onSensorChanged(event: SensorEvent?) {
         if (event?.sensor?.type == Sensor.TYPE_STEP_COUNTER) {
             totalSteps = event.values[0]
@@ -377,13 +384,6 @@ class HomeScreenViewModel @Inject constructor(
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
-
-    private fun resetSteps() {
-        _uiStates.value = _uiStates.value.copy(stepCount = totalSteps.toInt())
-        previousTotalSteps = totalSteps
-        _stepCount.value = 0
-        sendStepCount(0)
-    }
 
     override fun onCleared() {
         super.onCleared()

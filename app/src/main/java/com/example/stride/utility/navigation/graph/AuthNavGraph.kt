@@ -119,7 +119,7 @@ fun NavGraphBuilder.authNavGraph(rootNavController: NavHostController){
 
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-                .requestIdToken(context.getString(R.string.server_client_id))
+                .requestIdToken("960263820346-thl1ja0j1d2kelqj6a894j46uophg6k0.apps.googleusercontent.com")
                 .build()
 
             val googleSignInClient = GoogleSignIn.getClient(context, gso)
