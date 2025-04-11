@@ -14,3 +14,5 @@
 .cxx
 local.properties
 KeyStore.jks
+.jks
+.properties
