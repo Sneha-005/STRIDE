@@ -5,12 +5,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import com.example.stride.data.local.DataStoreRepository
+<<<<<<< HEAD
 import com.example.stride.data.local.ResetDataStore
 import com.example.stride.data.remote.dto.OtpLoginDto
 import com.example.stride.data.remote.dto.OtpSignUpDto
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.domain.sharedModels.UserRepository
 
+=======
+import com.example.stride.data.remote.dto.OtpSignUpDto
+import com.example.stride.domain.repository.ApiServicesRepository
+import com.example.stride.domain.sharedModels.UserRepository
+>>>>>>> dev
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

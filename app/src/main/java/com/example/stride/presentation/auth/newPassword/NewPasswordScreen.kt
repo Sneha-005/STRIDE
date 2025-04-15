@@ -1,8 +1,6 @@
 package com.example.stride.presentation.auth.newPassword
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +21,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.stride.R
@@ -70,7 +67,7 @@ fun NewPasswordScreen(
             .fillMaxSize()
             .background(colorResource(id = R.color.background_color))
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 84.dp),
+            .padding(horizontal = 24.dp, vertical = 6.dp),
     ) {
         Text(
             text = "Create a New Password",
@@ -99,6 +96,7 @@ fun NewPasswordScreen(
                 focusedBorderColor = colorResource(id = R.color.purple),
                 focusedLabelColor = colorResource(id = R.color.purple),
                 focusedTextColor = colorResource(id = R.color.white),
+                errorBorderColor = colorResource(id = R.color.error_color),
                 cursorColor = Color.White
             ),
             maxLines = 1,
@@ -228,6 +226,7 @@ fun NewPasswordScreen(
                 },
                 colors = OutlinedTextFieldDefaults.colors(
 <<<<<<< HEAD
+<<<<<<< HEAD
                     focusedBorderColor = colorResource(id = R.color.coral),
                     focusedLabelColor = colorResource(id = R.color.coral),
 =======
@@ -235,6 +234,11 @@ fun NewPasswordScreen(
                     focusedLabelColor = colorResource(id = R.color.purple),
                     errorBorderColor = colorResource(id = R.color.error_color),
 >>>>>>> e55541d (added id)
+=======
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
+                    errorBorderColor = colorResource(id = R.color.error_color),
+>>>>>>> dev
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),

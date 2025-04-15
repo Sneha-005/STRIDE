@@ -2,8 +2,19 @@ package com.example.stride.presentation.dashboard.homePage
 
 import android.annotation.SuppressLint
 import android.app.Activity
+<<<<<<< HEAD
 import android.util.Log
 import androidx.activity.compose.BackHandler
+=======
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.os.Build
+import android.util.Log
+import androidx.activity.compose.BackHandler
+import androidx.annotation.RequiresApi
+>>>>>>> dev
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,12 +54,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.material3.rememberModalBottomSheetState
+<<<<<<< HEAD
+=======
+import androidx.compose.runtime.DisposableEffect
+>>>>>>> dev
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+<<<<<<< HEAD
+=======
+import androidx.core.content.ContextCompat
+>>>>>>> dev
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -64,6 +83,10 @@ import com.example.stride.utility.theme.textStyleInter18Lh28Fw600
 import com.example.stride.utility.theme.textStyleInter28Lh34Fw600
 import com.example.stride.utility.theme.textStyleInter32Lh38Fw600
 
+<<<<<<< HEAD
+=======
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+>>>>>>> dev
 @SuppressLint("ContextCastToActivity")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -75,7 +98,11 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
         activity?.finish()
     }
     val repository = StepRepository(context)
+<<<<<<< HEAD
     var dailySteps by remember { mutableIntStateOf(0) }
+=======
+    var dailySteps by remember { mutableStateOf(0) }
+>>>>>>> dev
     var showBottomSheet by remember { mutableStateOf(false) }
     var clickedCard by remember { mutableStateOf("") }
     val sheetState = rememberModalBottomSheetState()
@@ -91,6 +118,37 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
     var workoutId by remember { mutableStateOf<Int?>(null) }
     val selectedName by remember { mutableStateOf("") }
 
+<<<<<<< HEAD
+=======
+    val stepResetReceiver = remember {
+        object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                if (intent?.action == "com.example.stride.STEP_RESET") {
+                    Log.d("HomeScreen", "Step reset detected. Updating UI.")
+                    dailySteps = 0
+                    viewModel.resetSteps()
+                }
+            }
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        Log.d("HomeScreen", "Registering StepResetReceiver")
+        context.registerReceiver(
+            stepResetReceiver,
+            IntentFilter("com.example.stride.STEP_RESET"),
+            Context.RECEIVER_NOT_EXPORTED
+        )
+    }
+
+
+    DisposableEffect(Unit) {
+        onDispose {
+            context.unregisterReceiver(stepResetReceiver)
+        }
+    }
+
+>>>>>>> dev
     LaunchedEffect(Unit) {
         val stepsData = repository.getStepsForDate(getCurrentDate())
         dailySteps = stepsData?.stepCount ?: 0
@@ -443,6 +501,10 @@ fun HomeScreen(viewModel: HomeScreenViewModel, navController: NavHostController)
 }
 
 
+<<<<<<< HEAD
+=======
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+>>>>>>> dev
 @Composable
 @CompletePreviews
 @OrientationPreviews

@@ -62,7 +62,7 @@ fun GetStartedScreen(
 
     if (uiStates?.isLoading == true) {
         Dialog(onDismissRequest = {}) {
-            CircularProgressIndicator(color = colorResource(id = R.color.coral))
+            CircularProgressIndicator(color = colorResource(id = R.color.primary0))
         }
     }
 
@@ -111,8 +111,13 @@ fun GetStartedScreen(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                 colors = OutlinedTextFieldDefaults.colors(
+<<<<<<< HEAD
 //                    focusedBorderColor = colorResource(id = R.color.purple),
 //                    focusedLabelColor = colorResource(id = R.color.purple),
+=======
+                    focusedBorderColor = colorResource(id = R.color.purple),
+                    focusedLabelColor = colorResource(id = R.color.purple),
+>>>>>>> dev
                     focusedTextColor = colorResource(id = R.color.white),
                     errorBorderColor = colorResource(id = R.color.error_color),
                     cursorColor = Color.White

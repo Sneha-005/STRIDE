@@ -1,6 +1,5 @@
 package com.example.stride.presentation.auth.resetPassword
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController

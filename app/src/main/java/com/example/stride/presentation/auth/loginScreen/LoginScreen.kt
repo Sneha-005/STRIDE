@@ -1,7 +1,6 @@
 package com.example.stride.presentation.auth.loginScreen
 
 import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -33,7 +32,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -43,11 +41,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.stride.R
-import com.example.stride.presentation.auth.getStarted.GetStartedScreen
 import com.example.stride.utility.composeUtility.CompletePreviews
 import com.example.stride.utility.composeUtility.OrientationPreviews
 import com.example.stride.utility.composeUtility.sdp
@@ -56,8 +52,6 @@ import com.example.stride.utility.theme.textStyleInter14Lh16Fw700
 import com.example.stride.utility.theme.textStyleInter16Lh18Fw700
 import com.example.stride.utility.theme.textStyleInter16Lh24Fw400
 import com.example.stride.utility.theme.textStyleInter24Lh28Fw600
-
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun LoginScreen(
@@ -94,7 +88,11 @@ fun LoginScreen(
             .fillMaxSize()
             .background(colorResource(id = R.color.background_color))
             .verticalScroll(rememberScrollState())
+<<<<<<< HEAD
             .padding(horizontal = 24.dp, vertical = 106.dp),
+=======
+            .padding(horizontal = 24.dp, vertical = 6.dp),
+>>>>>>> dev
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
 
@@ -119,6 +117,7 @@ fun LoginScreen(
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             colors = OutlinedTextFieldDefaults.colors(
 <<<<<<< HEAD
+<<<<<<< HEAD
                 focusedBorderColor = colorResource(id = R.color.coral),
                 focusedLabelColor = colorResource(id = R.color.coral),
 =======
@@ -126,6 +125,11 @@ fun LoginScreen(
                 focusedLabelColor = colorResource(id = R.color.purple),
                 errorBorderColor = colorResource(id = R.color.error_color),
 >>>>>>> e55541d (added id)
+=======
+                focusedBorderColor = colorResource(id = R.color.purple),
+                focusedLabelColor = colorResource(id = R.color.purple),
+                errorBorderColor = colorResource(id = R.color.error_color),
+>>>>>>> dev
                 focusedTextColor = colorResource(id = R.color.white)
             ),
             isError = emailError,
@@ -177,6 +181,7 @@ fun LoginScreen(
                 focusedBorderColor = colorResource(id = R.color.coral),
                 focusedLabelColor = colorResource(id = R.color.coral),
                 focusedTextColor = colorResource(id = R.color.white),
+                errorBorderColor = colorResource(id = R.color.error_color),
                 cursorColor = Color.White
             ),
             maxLines = 1,

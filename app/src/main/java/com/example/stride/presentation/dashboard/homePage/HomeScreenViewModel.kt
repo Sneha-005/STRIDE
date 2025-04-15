@@ -76,7 +76,11 @@ class HomeScreenViewModel @Inject constructor(
     private var previousTotalSteps = 0f
 
     private val _stepCount = MutableStateFlow(0)
+<<<<<<< HEAD
     val stepCount = _stepCount.asStateFlow()
+=======
+    val stepCount: StateFlow<Int> = _stepCount.asStateFlow()
+>>>>>>> dev
 
     private var _uiStates = MutableStateFlow(HomeScreenStates())
     val uiStates: StateFlow<HomeScreenStates> = _uiStates.asStateFlow()
@@ -111,6 +115,16 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
+<<<<<<< HEAD
+=======
+    fun resetSteps() {
+        _uiStates.value = _uiStates.value.copy(stepCount = 0)
+        previousTotalSteps = totalSteps
+        _stepCount.value = 0
+        sendStepCount(0)
+    }
+
+>>>>>>> dev
     override fun onSensorChanged(event: SensorEvent?) {
         if (event?.sensor?.type == Sensor.TYPE_STEP_COUNTER) {
             totalSteps = event.values[0]
@@ -378,6 +392,7 @@ class HomeScreenViewModel @Inject constructor(
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
+<<<<<<< HEAD
     private fun resetSteps() {
         _uiStates.value = _uiStates.value.copy(stepCount = totalSteps.toInt())
         previousTotalSteps = totalSteps
@@ -385,6 +400,8 @@ class HomeScreenViewModel @Inject constructor(
         sendStepCount(_uiStates.value.stepCount)
     }
 
+=======
+>>>>>>> dev
     override fun onCleared() {
         super.onCleared()
         sensorManager?.unregisterListener(this)

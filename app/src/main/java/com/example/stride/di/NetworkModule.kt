@@ -1,11 +1,20 @@
 package com.example.stride.di
 
+import android.app.Application
+import android.app.NotificationManager
 import android.content.Context
+import android.hardware.SensorManager
 import com.example.stride.data.local.DataStoreRepository
 import com.example.stride.data.local.ResetDataStore
 import com.example.stride.data.remote.ApiServices
+import com.example.stride.data.remote.OauthServices
 import com.example.stride.data.repository.ApiServicesRepositoryImpl
+import com.example.stride.data.repository.OauthServicesRepositoryImpl
 import com.example.stride.domain.repository.ApiServicesRepository
+<<<<<<< HEAD
+=======
+import com.example.stride.domain.repository.OauthServiceRepository
+>>>>>>> dev
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,16 +22,27 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.runBlocking
 import retrofit2.Retrofit
+<<<<<<< HEAD
 import com.google.android.gms.auth.api.identity.Identity
+=======
+>>>>>>> dev
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import javax.inject.Qualifier
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class OauthRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class RegularRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule
-{
+object NetworkModule {
 
     @Provides
     @Singleton
@@ -45,11 +65,19 @@ object NetworkModule
     fun provideContext(@ApplicationContext context: Context): Context {
         return context
     }
+
     @Provides
     @Singleton
+<<<<<<< HEAD
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://fitness-tracker-hbou.onrender.com/api/v1/auth/")
+=======
+    @OauthRetrofit
+    fun providesOauthRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://accounts.google.com/")
+>>>>>>> dev
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -57,7 +85,24 @@ object NetworkModule
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiServices {
+    @RegularRetrofit
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://fitness-tracker-hbou.onrender.com/api/")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOauthService(@OauthRetrofit retrofit: Retrofit): OauthServices {
+        return retrofit.create(OauthServices::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(@RegularRetrofit retrofit: Retrofit): ApiServices {
         return retrofit.create(ApiServices::class.java)
     }
 
@@ -69,7 +114,13 @@ object NetworkModule
 
     @Provides
     @Singleton
-    fun provideApiKeys(dataStoreRepository: DataStoreRepository): String{
+    fun provideOauthServiceRepository(oauthServices: OauthServices): OauthServiceRepository {
+        return OauthServicesRepositoryImpl(oauthServices)
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiKeys(dataStoreRepository: DataStoreRepository): String {
         return runBlocking {
             dataStoreRepository.readToken() ?: ""
         }
@@ -80,4 +131,6 @@ object NetworkModule
     fun provideResetDataStore(context: Context): ResetDataStore {
         return ResetDataStore(context)
     }
+
+
 }

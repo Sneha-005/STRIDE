@@ -20,6 +20,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-feature android:name="android.hardware.camera.any" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+>>>>>>> dev
 
     <application
         android:name=".StrideApplication"
@@ -36,9 +41,14 @@
             android:name=".utility.stepCounter.StepCounterService"
             android:foregroundServiceType="health"
             android:exported="false" />
+<<<<<<< HEAD
         <receiver android:name=".utility.stepCounter.MidnightResetReceiver"
             android:exported="false">
         </receiver>
+=======
+        <receiver android:name=".utility.stepCounter.StepResetReceiver" android:exported="false"/>
+
+>>>>>>> dev
 
         <receiver android:name=".BootReceiver" android:exported="false">
             <intent-filter>
@@ -53,7 +63,12 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+<<<<<<< HEAD
             android:theme="@style/Theme.Stride">
+=======
+            android:theme="@style/Theme.Stride"
+            tools:targetApi="33">
+>>>>>>> dev
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

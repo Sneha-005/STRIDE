@@ -1,12 +1,18 @@
 package com.example.stride.presentation.auth.otpSignUpScreen
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint
+=======
+>>>>>>> dev
 import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+<<<<<<< HEAD
 import androidx.compose.foundation.layout.Box
+=======
+>>>>>>> dev
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -332,7 +338,11 @@ fun OtpSignUpScreen(
                             .clickable {
                                 onResendOtpClick()
                                 resendMessage = "A new OTP has been sent to your email."
+<<<<<<< HEAD
                                 timer = 60 // Reset the timer value here
+=======
+                                timer = 60
+>>>>>>> dev
                             }
                     ) {
 

@@ -52,6 +52,10 @@ import com.example.stride.presentation.dashboard.landingPage.Questions
 import com.example.stride.presentation.dashboard.landingPage.goalSelection.GoalSelectionScreen
 import com.example.stride.utility.navigation.AuthRouteScreen
 import com.example.stride.utility.navigation.Graph
+<<<<<<< HEAD
+=======
+import com.github.mikephil.charting.BuildConfig
+>>>>>>> dev
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -119,7 +123,11 @@ fun NavGraphBuilder.authNavGraph(rootNavController: NavHostController){
 
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
+<<<<<<< HEAD
                 .requestIdToken(@string/server_client_id))
+=======
+                .requestIdToken(BuildConfig.CLIENT_ID)
+>>>>>>> dev
                 .build()
 
             val googleSignInClient = GoogleSignIn.getClient(context, gso)

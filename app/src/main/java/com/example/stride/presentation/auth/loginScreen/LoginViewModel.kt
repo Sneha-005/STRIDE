@@ -8,7 +8,6 @@ import com.example.stride.data.local.DataStoreRepository
 import com.example.stride.data.remote.dto.LoginResponseDto
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.domain.sharedModels.UserRepository
-import com.example.stride.presentation.auth.Screen
 import com.example.stride.utility.composeUtility.isValidEmail
 import com.example.stride.utility.composeUtility.isValidPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,12 +16,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 data class LoginStates(
@@ -91,6 +87,11 @@ class LoginViewModel @Inject constructor(
                         call: Call<LoginResponseDto>,
                         response: Response<LoginResponseDto>
                     ) {
+                        Log.d("LoginViewModel", "Request: email=${_uiStates.value.email}, password=${_uiStates.value.password}")
+                        Log.d("LoginViewModel", "Response Code: ${response.code()}")
+                        Log.d("LoginViewModel", "Response Message: ${response.message()}")
+                        Log.d("LoginViewModel", "Response Body: ${response.body()}")
+
                         if (response.isSuccessful) {
                             _uiStates.value = _uiStates.value.copy(
                                 isLoading = false,
@@ -98,6 +99,10 @@ class LoginViewModel @Inject constructor(
                             )
                             viewModelScope.launch {
                                 dataStoreRepository.saveToken(response.body()?.token ?: "")
+<<<<<<< HEAD
+=======
+                                Log.d("LoginViewModel", "Response: ${response.body()}")
+>>>>>>> dev
                                 navHostController.navigate("dashboard")
                             }
                             Log.d("LoginViewModel", "Response: ${response.body()}")

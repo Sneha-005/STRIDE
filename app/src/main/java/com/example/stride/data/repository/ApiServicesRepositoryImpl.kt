@@ -1,6 +1,7 @@
 package com.example.stride.data.repository
 
 import com.example.stride.data.remote.ApiServices
+import com.example.stride.data.remote.dto.LandingDto
 import com.example.stride.data.remote.dto.LoginResponseDto
 import com.example.stride.data.remote.dto.NewPasswordDto
 import com.example.stride.data.remote.dto.OauthDto
@@ -11,7 +12,10 @@ import com.example.stride.data.remote.dto.SignUpDto
 import com.example.stride.data.remote.dto.dashboard.CaloriesBurntResponse
 import com.example.stride.data.remote.dto.dashboard.CaloriesConsumedResponse
 import com.example.stride.data.remote.dto.dashboard.CompleteExerciseDto
+<<<<<<< HEAD
 import com.example.stride.data.remote.dto.LandingDto
+=======
+>>>>>>> dev
 import com.example.stride.data.remote.dto.dashboard.StepCounterResponse
 import com.example.stride.data.remote.dto.dashboard.UpdateUserDataDto
 import com.example.stride.data.remote.dto.dashboard.UserDataDto
@@ -31,6 +35,7 @@ import com.example.stride.domain.models.SignUpRequest
 import com.example.stride.domain.models.dashboard.UpdateUserRequest
 import com.example.stride.domain.repository.ApiServicesRepository
 import retrofit2.Call
+import retrofit2.Response
 import javax.inject.Inject
 
 class ApiServicesRepositoryImpl @Inject constructor(

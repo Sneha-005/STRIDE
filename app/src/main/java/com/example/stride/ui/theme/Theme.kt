@@ -1,7 +1,7 @@
 package com.example.stride.ui.theme
 
-import android.app.Activity
 import android.os.Build
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -12,31 +12,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Color(0xFFFF6F61), // Coral Red
+    onPrimary = Color.White,    // Text on Primary
+    background = Color(0xFF121212), // Dark Gray/Black
+    surface = Color(0xFF1E1E1E),    // Slightly lighter gray for surfaces
+    onBackground = Color.White, // Text on Background
+    onSurface = Color.White     // Text on Surface
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Color(0xFFFF6F61), // Coral Red
+    onPrimary = Color.Black,    // Text on Primary
+    background = Color.White, // Dark Gray/Black
+    surface = Color(0xFF1E1E1E),    // Slightly lighter gray for surfaces
+    onBackground = Color.Black, // Text on Background
+    onSurface = Color.Black     // Text on Surface
 )
 
 @Composable
 fun StrideTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
