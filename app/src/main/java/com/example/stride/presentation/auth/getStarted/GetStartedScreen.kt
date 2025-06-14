@@ -111,13 +111,8 @@ fun GetStartedScreen(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                 colors = OutlinedTextFieldDefaults.colors(
-<<<<<<< HEAD
-//                    focusedBorderColor = colorResource(id = R.color.purple),
-//                    focusedLabelColor = colorResource(id = R.color.purple),
-=======
                     focusedBorderColor = colorResource(id = R.color.purple),
                     focusedLabelColor = colorResource(id = R.color.purple),
->>>>>>> dev
                     focusedTextColor = colorResource(id = R.color.white),
                     errorBorderColor = colorResource(id = R.color.error_color),
                     cursorColor = Color.White

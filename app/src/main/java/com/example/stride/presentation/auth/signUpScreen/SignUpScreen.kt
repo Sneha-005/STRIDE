@@ -1,6 +1,5 @@
 package com.example.stride.presentation.auth.signUpScreen
 
-<<<<<<< HEAD
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,25 +10,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-=======
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
->>>>>>> dev
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-<<<<<<< HEAD
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-=======
-import androidx.compose.foundation.rememberScrollState
->>>>>>> dev
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -50,43 +38,35 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-<<<<<<< HEAD
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusDirection
-=======
->>>>>>> dev
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
-<<<<<<< HEAD
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-=======
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
->>>>>>> dev
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.stride.R
 import com.example.stride.utility.composeUtility.CompletePreviews
 import com.example.stride.utility.composeUtility.OrientationPreviews
 import com.example.stride.utility.composeUtility.sdp
-<<<<<<< HEAD
 import com.example.stride.utility.composeUtility.ssp
 import com.example.stride.utility.theme.textStyleInter12Lh18Fw400
-=======
->>>>>>> dev
 import com.example.stride.utility.theme.textStyleInter12Lh18Fw500
 import com.example.stride.utility.theme.textStyleInter16Lh18Fw700
 import com.example.stride.utility.theme.textStyleInter16Lh24Fw400
 import com.example.stride.utility.theme.textStyleInter24Lh28Fw600
+import androidx.compose.runtime.DisposableEffect
+import androidx.core.content.ContextCompat
+import android.os.Build
+import androidx.annotation.RequiresApi
 
 @Composable
 fun SignupScreen(
@@ -145,11 +125,7 @@ fun SignupScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-<<<<<<< HEAD
                 .padding(horizontal = padding, vertical = 32.dp)
-=======
-                .padding(horizontal = padding, vertical = 6.dp)
->>>>>>> dev
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -170,23 +146,9 @@ fun SignupScreen(
                 keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                 isError = emailError,
                 colors = OutlinedTextFieldDefaults.colors(
-<<<<<<< HEAD
-<<<<<<< HEAD
                     focusedBorderColor = colorResource(id = R.color.coral),
                     focusedLabelColor = colorResource(id = R.color.coral),
                     focusedTextColor = colorResource(id = R.color.white)
-=======
-=======
->>>>>>> dev
-                    focusedBorderColor = colorResource(id = R.color.purple),
-                    focusedLabelColor = colorResource(id = R.color.purple),
-                    focusedTextColor = colorResource(id = R.color.white),
-                    errorBorderColor = colorResource(id = R.color.error_color),
-
-<<<<<<< HEAD
->>>>>>> e55541d (added id)
-=======
->>>>>>> dev
                 ),
                 singleLine = true,
                 readOnly = true,
@@ -219,10 +181,6 @@ fun SignupScreen(
                     focusedBorderColor = colorResource(id = R.color.purple),
                     focusedLabelColor = colorResource(id = R.color.purple),
                     focusedTextColor = colorResource(id = R.color.white),
-<<<<<<< HEAD
-=======
-                    errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> dev
                     cursorColor = Color.White
                 ),
                 maxLines = 1,
@@ -271,10 +229,6 @@ fun SignupScreen(
                     focusedBorderColor = colorResource(id = R.color.purple),
                     focusedLabelColor = colorResource(id = R.color.purple),
                     focusedTextColor = colorResource(id = R.color.white),
-<<<<<<< HEAD
-=======
-                    errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> dev
                     cursorColor = Color.White
                 ),
                 maxLines = 1,
@@ -326,10 +280,6 @@ fun SignupScreen(
                     focusedBorderColor = colorResource(id = R.color.purple),
                     focusedLabelColor = colorResource(id = R.color.purple),
                     focusedTextColor = colorResource(id = R.color.white),
-<<<<<<< HEAD
-=======
-                    errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> dev
                     cursorColor = Color.White
                 ),
                 maxLines = 1,

@@ -12,10 +12,6 @@ import com.example.stride.data.remote.dto.SignUpDto
 import com.example.stride.data.remote.dto.dashboard.CaloriesBurntResponse
 import com.example.stride.data.remote.dto.dashboard.CaloriesConsumedResponse
 import com.example.stride.data.remote.dto.dashboard.CompleteExerciseDto
-<<<<<<< HEAD
-import com.example.stride.data.remote.dto.LandingDto
-=======
->>>>>>> dev
 import com.example.stride.data.remote.dto.dashboard.StepCounterResponse
 import com.example.stride.data.remote.dto.dashboard.UpdateUserDataDto
 import com.example.stride.data.remote.dto.dashboard.UserDataDto

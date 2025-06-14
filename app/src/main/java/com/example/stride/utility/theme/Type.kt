@@ -129,7 +129,6 @@ fun textStyleInter16Lh24Fw500(): TextStyle {
         lineHeight = 24.ssp,
         fontFamily = FontFamily(Font(R.font.nunito_sans)),
         fontWeight = FontWeight(500)
-<<<<<<< HEAD
     )
 }
 
@@ -141,8 +140,6 @@ fun textStyleInter16Lh24Fw600(): TextStyle {
         lineHeight = 24.ssp,
         fontFamily = FontFamily(Font(R.font.nunito_sans)),
         fontWeight = FontWeight(600)
-=======
->>>>>>> dev
     )
 }
 

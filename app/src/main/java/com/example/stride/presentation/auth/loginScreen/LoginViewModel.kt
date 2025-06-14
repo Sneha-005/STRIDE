@@ -99,10 +99,6 @@ class LoginViewModel @Inject constructor(
                             )
                             viewModelScope.launch {
                                 dataStoreRepository.saveToken(response.body()?.token ?: "")
-<<<<<<< HEAD
-=======
-                                Log.d("LoginViewModel", "Response: ${response.body()}")
->>>>>>> dev
                                 navHostController.navigate("dashboard")
                             }
                             Log.d("LoginViewModel", "Response: ${response.body()}")

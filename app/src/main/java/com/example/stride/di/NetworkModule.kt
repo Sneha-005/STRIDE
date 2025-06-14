@@ -11,10 +11,7 @@ import com.example.stride.data.remote.OauthServices
 import com.example.stride.data.repository.ApiServicesRepositoryImpl
 import com.example.stride.data.repository.OauthServicesRepositoryImpl
 import com.example.stride.domain.repository.ApiServicesRepository
-<<<<<<< HEAD
-=======
 import com.example.stride.domain.repository.OauthServiceRepository
->>>>>>> dev
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,10 +19,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.runBlocking
 import retrofit2.Retrofit
-<<<<<<< HEAD
 import com.google.android.gms.auth.api.identity.Identity
-=======
->>>>>>> dev
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -68,16 +62,10 @@ object NetworkModule {
 
     @Provides
     @Singleton
-<<<<<<< HEAD
-    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://fitness-tracker-hbou.onrender.com/api/v1/auth/")
-=======
     @OauthRetrofit
     fun providesOauthRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://accounts.google.com/")
->>>>>>> dev
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -131,6 +119,5 @@ object NetworkModule {
     fun provideResetDataStore(context: Context): ResetDataStore {
         return ResetDataStore(context)
     }
-
 
 }

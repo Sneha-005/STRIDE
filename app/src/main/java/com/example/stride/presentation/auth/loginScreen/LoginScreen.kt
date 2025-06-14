@@ -88,11 +88,7 @@ fun LoginScreen(
             .fillMaxSize()
             .background(colorResource(id = R.color.background_color))
             .verticalScroll(rememberScrollState())
-<<<<<<< HEAD
-            .padding(horizontal = 24.dp, vertical = 106.dp),
-=======
             .padding(horizontal = 24.dp, vertical = 6.dp),
->>>>>>> dev
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
 
@@ -116,20 +112,9 @@ fun LoginScreen(
             },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             colors = OutlinedTextFieldDefaults.colors(
-<<<<<<< HEAD
-<<<<<<< HEAD
-                focusedBorderColor = colorResource(id = R.color.coral),
-                focusedLabelColor = colorResource(id = R.color.coral),
-=======
                 focusedBorderColor = colorResource(id = R.color.purple),
                 focusedLabelColor = colorResource(id = R.color.purple),
                 errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> e55541d (added id)
-=======
-                focusedBorderColor = colorResource(id = R.color.purple),
-                focusedLabelColor = colorResource(id = R.color.purple),
-                errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> dev
                 focusedTextColor = colorResource(id = R.color.white)
             ),
             isError = emailError,

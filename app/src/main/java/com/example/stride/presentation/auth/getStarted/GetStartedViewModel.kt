@@ -66,10 +66,6 @@ class GetStartedViewModel @Inject constructor(
                         if (response.isSuccessful) {
                             val message = response.body()?.message
                             userRepository.setValues(UserModel(email = email))
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
                             when (message) {
                                 "Go to login" -> navController.navigate("login_screen/$email")
                                 "Go to SignUP" -> navController.navigate("sign_up_screen/$email")

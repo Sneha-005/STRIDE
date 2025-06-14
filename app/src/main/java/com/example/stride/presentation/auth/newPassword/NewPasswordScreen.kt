@@ -225,20 +225,9 @@ fun NewPasswordScreen(
                     Text("Confirm Password", color = colorResource(id = R.color.font_500))
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    focusedBorderColor = colorResource(id = R.color.coral),
-                    focusedLabelColor = colorResource(id = R.color.coral),
-=======
                     focusedBorderColor = colorResource(id = R.color.purple),
                     focusedLabelColor = colorResource(id = R.color.purple),
                     errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> e55541d (added id)
-=======
-                    focusedBorderColor = colorResource(id = R.color.purple),
-                    focusedLabelColor = colorResource(id = R.color.purple),
-                    errorBorderColor = colorResource(id = R.color.error_color),
->>>>>>> dev
                     focusedTextColor = colorResource(id = R.color.white),
                     cursorColor = Color.White
                 ),

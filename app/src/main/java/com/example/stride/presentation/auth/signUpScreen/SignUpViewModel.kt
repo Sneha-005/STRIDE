@@ -4,10 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-<<<<<<< HEAD
 import com.example.stride.data.remote.dto.SignUpDto
-=======
->>>>>>> dev
 import com.example.stride.domain.models.UserModel
 import com.example.stride.domain.repository.ApiServicesRepository
 import com.example.stride.domain.sharedModels.UserRepository
@@ -18,12 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-<<<<<<< HEAD
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-=======
->>>>>>> dev
 import javax.inject.Inject
 
 data class SignUpStates(
