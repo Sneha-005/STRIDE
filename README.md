@@ -5,40 +5,36 @@ Stride is a feature-rich Android application designed to track and manage daily 
 
 ## 📱 Screenshots
 
-<img width="143" height="333" alt="Image" src="https://github.com/user-attachments/assets/d0588d73-d6cb-4880-9b81-dfa3db025505" />&nbsp;
-<img width="148" height="332" alt="Image" src="https://github.com/user-attachments/assets/ceb1b5ae-2ac0-44bc-8984-66f0f33b101e" />&nbsp;
-<img width="148" height="330" alt="Image" src="https://github.com/user-attachments/assets/bb8a0142-7313-4100-93c9-d219eac01d60" />&nbsp;
-<img width="148" height="334" alt="Image" src="https://github.com/user-attachments/assets/0bf9ec89-4835-41b2-a1c5-fcbb0fb9e5f2" />&nbsp;
-<img width="205" height="460" alt="Image" src="https://github.com/user-attachments/assets/bc1d5793-c8b3-4716-8e99-24999a0efded" />&nbsp;
-<img width="205" height="461" alt="Image" src="https://github.com/user-attachments/assets/49ddd591-0da6-4d84-a48f-cd445ac12d0d" />&nbsp;
-<img width="188" height="432" alt="Image" src="https://github.com/user-attachments/assets/d8466763-156d-4be8-a2b4-b4d0af213e7f" />&nbsp;
-<img width="163" height="364" alt="Image" src="https://github.com/user-attachments/assets/c3c58650-11c1-416b-9d23-d81327ea1b8c" />&nbsp;
-<img width="167" height="374" alt="Image" src="https://github.com/user-attachments/assets/bf923714-52cf-4a06-843b-e6a78f2e8bdb" />&nbsp;
-<img width="166" height="375" alt="Image" src="https://github.com/user-attachments/assets/a160225e-4149-4913-a425-e78a3db87a16" />&nbsp;
-<img width="149" height="334" alt="Image" src="https://github.com/user-attachments/assets/9653a403-b4e9-4b41-aacb-bf9645662dfb" />&nbsp;
-<img width="147" height="327" alt="Image" src="https://github.com/user-attachments/assets/7cee202b-7b38-4970-81c6-40266ccf31d4" />&nbsp;
-<img width="148" height="332" alt="Image" src="https://github.com/user-attachments/assets/00a96c02-9743-41cc-aa4c-24e8b46ee83e" />&nbsp;
-<img width="150" height="330" alt="Image" src="https://github.com/user-attachments/assets/0e3e2607-8d93-4c95-b0ee-bbc3e2496b51" />&nbsp;
-<img width="148" height="333" alt="Image" src="https://github.com/user-attachments/assets/5ede90f1-b145-4be6-a8ee-cc312b2e4885" />&nbsp;
-<img width="151" height="330" alt="Image" src="https://github.com/user-attachments/assets/620ce550-65c7-48c1-aa34-8d12ad64c9f4" />&nbsp;
-<img width="146" height="334" alt="Image" src="https://github.com/user-attachments/assets/e74f8da3-0aba-42ef-9fc7-354f327533fb" />&nbsp;
-<img width="149" height="330" alt="Image" src="https://github.com/user-attachments/assets/0052d289-d141-4d9f-8181-03651a8fcf1a" />&nbsp;
-<img width="146" height="366" alt="Image" src="https://github.com/user-attachments/assets/26dbbd7a-92f1-4337-8677-c62b7fac164f" />&nbsp;
-<img width="148" height="331" alt="Image" src="https://github.com/user-attachments/assets/e95c4c2b-ed15-4c01-987c-3cfb820c6d73" />&nbsp;
-<img width="148" height="365" alt="Image" src="https://github.com/user-attachments/assets/c9a9c59b-3205-473e-84cf-d93db6c85a38" />&nbsp;
-<img width="150" height="343" alt="Image" src="https://github.com/user-attachments/assets/63af5b0b-3d2a-45e1-a1c6-0d1aedae7cc3" />&nbsp;
-<img width="148" height="333" alt="Image" src="https://github.com/user-attachments/assets/feac08d4-aca3-442c-a3bd-355ee5e6d3c9" />&nbsp;
-<img width="145" height="333" alt="Image" src="https://github.com/user-attachments/assets/8e70999f-2814-41ad-b248-436c4d59b814" />&nbsp;
-<img width="147" height="333" alt="Image" src="https://github.com/user-attachments/assets/9838c134-19cd-4ccc-bcca-3aa6b51044cb" />&nbsp;
-<img width="150" height="333" alt="Image" src="https://github.com/user-attachments/assets/7aec05f0-95d4-4fde-bb44-270ffb0f10cc" />&nbsp;
-<img width="149" height="416" alt="Image" src="https://github.com/user-attachments/assets/8f946d7a-6743-4e56-a16f-0853ab0ecdb9" />&nbsp;
-<img width="147" height="579" alt="Image" src="https://github.com/user-attachments/assets/82358538-3b88-46b1-9a33-dd573cb5dde6" />&nbsp;
-<img width="149" height="370" alt="Image" src="https://github.com/user-attachments/assets/c15dfffe-53ea-462c-af12-3c349a677cda" />&nbsp;
-<img width="147" height="335" alt="Image" src="https://github.com/user-attachments/assets/4cfb8b09-387f-4a43-80a1-16bbc47c0c8d" />&nbsp;
-<img width="150" height="332" alt="Image" src="https://github.com/user-attachments/assets/55c6aa83-ba52-434c-8b94-ee4848b03beb" />&nbsp;
-<img width="147" height="528" alt="Image" src="https://github.com/user-attachments/assets/02ac809b-cead-49c8-9755-a6eb0dac48cc" />&nbsp;
-<img width="145" height="333" alt="Image" src="https://github.com/user-attachments/assets/01d2e83c-2086-4bb6-9feb-c641aaf619bd" />&nbsp;
-<img width="146" height="383" alt="Image" src="https://github.com/user-attachments/assets/b037085e-99ce-4953-b899-feffa4750092" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/7ecfd4c6-ef12-4cd0-91b7-3800126f68b7" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/ed6841e5-74f3-4352-a8a5-9388e0ada616" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/249afadd-038b-4671-8990-4870309da9f2" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/8fd6312c-04c8-4a88-94bc-265a89fd5033" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/e01fdb4a-71d2-495f-a116-7431ab91af2e" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/6b235db0-30b0-4304-ae2f-feb8f5e8dc85" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/aeaf1b73-3e61-4b44-b273-821a8530a57a" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/642cfac1-71b3-4c4d-9fec-fc8dd6380405" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/8b5ca589-09d0-40ef-a08b-e2b60412db00" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/46d0dd7f-b251-4162-9ba6-d856def6299b" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/1b8c5b87-01dc-4e39-8657-f22020f90373" />&nbsp;
+<img width="720" height="1646" alt="Image" src="https://github.com/user-attachments/assets/91ffec52-f887-4f55-8261-283a470d0fcc" />&nbsp;
+<img width="720" height="1748" alt="Image" src="https://github.com/user-attachments/assets/4a61518a-4efc-4726-b289-c171fa3d674a" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/91def949-1619-4ad6-b50a-2d6a2a475013" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/24efdfe1-b614-4f15-96fb-b31b1f74ab70" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/f6dd32b6-8ebe-454e-8625-2a5cfa401ae3" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/b187689d-fba1-482c-8997-20f1780d4bab" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/eadd4e5a-92ba-432d-9ea6-937472461688" />&nbsp;
+<img width="720" height="1778" alt="Image" src="https://github.com/user-attachments/assets/cb4b0ed9-ca5f-41bc-8a69-d8213f8b819a" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/d7c744f6-ea20-453e-9a68-1ddef253530b" />&nbsp;
+<img width="720" height="2538" alt="Image" src="https://github.com/user-attachments/assets/05ecf32f-e905-473e-9a8b-e7f08af79eb5" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/fcffac93-9cf3-49be-8beb-6bf020aff30b" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/c8971954-40ee-4f9a-9c1c-7340e1db9233" />&nbsp;
+<img width="720" height="1836" alt="Image" src="https://github.com/user-attachments/assets/ebd8656f-0e7d-49fb-a6da-1e9047a9dbad" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/37b88f45-38a4-4a96-af62-6398eb8c6c06" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/7eaa7bbc-285f-432b-9e3d-5e2c56dd1752" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/cc4f9217-55c6-4489-9d98-e723e2737aca" />&nbsp;
+<img width="720" height="2772" alt="Image" src="https://github.com/user-attachments/assets/1d041574-6628-463f-a828-557d31aa4efe" />&nbsp;
+<img width="720" height="1600" alt="Image" src="https://github.com/user-attachments/assets/d6aea6be-4723-4541-88ad-decb2a820ed6" />&nbsp;
+
 
 ## Features
 - **Step Tracking**: Tracks daily steps using Android's sensor framework and provides insights into step count trends.
