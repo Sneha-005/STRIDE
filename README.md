@@ -18,9 +18,6 @@ Stride is a feature-rich Android application designed to track and manage daily 
 <img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/b187689d-fba1-482c-8997-20f1780d4bab" />&nbsp;
 <img width="180" height="502" alt="Image" src="https://github.com/user-attachments/assets/c717e43a-97d7-4cf6-b1d0-e7245a265b77" />&nbsp;
 <img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/b3f92582-5f7a-411e-b01c-d868fbcf2261" />&nbsp;
-<img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/3b88ea07-7b39-4fb7-b36d-106a773bc560" />&nbsp;
-<img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/e051aa85-eca3-4f6c-b655-2fe4f39a776d" />&nbsp;
-<img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/e04813cc-f8da-4673-9a80-77d900f6dec5" />&nbsp;
 <img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/7471f113-8200-4658-a032-f21aacc6246e" />&nbsp;
 <img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/a4166b57-1856-42b1-a619-744d2b7ed207" />&nbsp;
 <img width="180" height="400" alt="Image" src="https://github.com/user-attachments/assets/1d733e10-9823-49e0-992d-a620e0ec6e33" />&nbsp;
