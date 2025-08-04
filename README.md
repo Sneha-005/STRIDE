@@ -1,7 +1,7 @@
 # STRIDE
 
 ## Overview
-Stride is a feature-rich Android application designed to track and manage daily step counts and workshop attendance. Built using Jetpack Compose, it offers a modern and intuitive user interface while leveraging advanced Android libraries for seamless functionality. The app is tailored for fitness enthusiasts and event organizers, providing step tracking, attendance management, and insightful statistics.
+Stride is a feature-rich Android application designed to track and manage user fitness. Built using Jetpack Compose, it offers a modern and intuitive user interface while leveraging advanced Android libraries for seamless functionality. The app is tailored for fitness enthusiasts and event organizers, providing step tracking, attendance management, and insightful statistics.
 
 ## 📱 Screenshots
 
@@ -69,6 +69,45 @@ The app employs a modular architecture that integrates various modern Android de
 
 5**State Management**
 - *ViewModel*: Utilized ViewModel to manage data for RecyclerView adapters, enabling efficient handling of dynamic lists and minimizing redundant API calls.
+
+## Project Structure
+
+```
+app/src/main/java/com/example/stride/
+├── data
+│   ├── local               # DataStore, local config, shared preferences
+│   ├── persistence         # Room database, DAOs
+│   ├── remote              # Retrofit APIs and remote data sources
+│   └── repository          # Data repository implementations
+│
+├── di
+│   ├── AuthInterceptor     # Auth headers for network requests
+│   └── NetworkModule.kt    # Network-related dependencies (e.g., Retrofit, OkHttp)
+│
+├── domain
+│   ├── models              # Core business models
+│   ├── repository          # Repository interfaces for abstraction
+│   ├── sharedModels        # Common/shared models used across modules
+│   └── usecases            # Business logic and interactors
+│
+├── presentation
+│   ├── auth                # Login/OTP/Signup UI logic
+│   ├── dashboard           # Home and dashboard UI
+│   ├── states              # State classes (e.g., sealed states, data holders)
+│   └── MainScreen.kt       # App entry screen using Compose
+│
+├── utility
+│   ├── broadcastReceiver   # Handles boot events, step reset, etc.
+│   ├── composeUtility      # Reusable composables/util functions
+│   ├── navigation          # Navigation setup and destinations
+│   ├── notification        # Local notification helpers
+│   ├── stepCounter         # SensorManager-based step tracking
+│   └── theme               # App theming (colors, typography, etc.)
+│
+├── Application.kt          # Custom Application class with Hilt setup
+├── BootReciever.kt         # Auto-launch feature via BootCompleted
+└── MainActivity.kt         # Jetpack Compose host activity
+```
 
 ## Technologies Used
 
